@@ -1,0 +1,4 @@
+// 1.20.1	2024-09-18T16:47:27.4834623	Registries
+ce6475d7557499f26213b0a1cd85462a09dab801 data/fairytalemod/forge/biome_modifier/add_tree_candycane.json
+a880f3cf85a6e7138c65b7913e716089740e71f6 data/fairytalemod/worldgen/configured_feature/candycane_tree.json
+a42b113810bd3d30d985e738bdd2e54ed3a41c55 data/fairytalemod/worldgen/placed_feature/candycane_tree_placed.json
