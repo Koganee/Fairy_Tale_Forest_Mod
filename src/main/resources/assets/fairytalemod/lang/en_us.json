@@ -3,5 +3,7 @@
   "block.fairytalemod.candycane_block": "Candycane Block",
   "item.fairytalemod.candycane": "Candycane",
   "item.fairytalemod.chocolate": "Chocolate",
-  "entity.fairytalemod.fancy_pig": "Fancy Pig"
+  "entity.fairytalemod.fancy_pig": "Fancy Pig",
+
+  "enchantment.fairytalemod.wolfs_fang": "Wolf's Fang"
 }

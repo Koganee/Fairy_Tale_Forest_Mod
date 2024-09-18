@@ -2,6 +2,7 @@ package net.kogane.fairytalemod;
 
 import com.mojang.logging.LogUtils;
 import net.kogane.fairytalemod.block.ModBlocks;
+import net.kogane.fairytalemod.enchantment.ModEnchantments;
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.client.FancyPigRenderer;
 import net.kogane.fairytalemod.item.ModItems;
@@ -54,6 +55,7 @@ public class FairyTaleMod
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModFeatures.register(modEventBus);
+        ModEnchantments.register(modEventBus);
 
 
         MinecraftForge.EVENT_BUS.register(this);
