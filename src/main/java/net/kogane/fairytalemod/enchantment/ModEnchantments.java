@@ -13,10 +13,14 @@ public class ModEnchantments {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS =
             DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, FairyTaleMod.MOD_ID);
 
-    public static final RegistryObject<Enchantment> LIGHTNING_STRIKER =
+    public static final RegistryObject<Enchantment> WOLFS_FANG =
             ENCHANTMENTS.register("wolfs_fang",
                     () -> new WolfsFangEnchantment(Enchantment.Rarity.COMMON, EnchantmentCategory.ARMOR_HEAD,
                             EquipmentSlot.HEAD));
+    public static final RegistryObject<Enchantment> SWEET_TOOTH =
+            ENCHANTMENTS.register("sweet_tooth",
+                    () -> new SweetToothEnchantment(Enchantment.Rarity.RARE, EnchantmentCategory.WEAPON,
+                            EquipmentSlot.MAINHAND));
 
     public static void register(IEventBus eventBus) {
         ENCHANTMENTS.register(eventBus);
