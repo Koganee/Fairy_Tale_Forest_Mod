@@ -7,6 +7,8 @@ import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.client.FancyPigRenderer;
 import net.kogane.fairytalemod.item.ModItems;
 import net.kogane.fairytalemod.worldgen.ModFeatures;
+import net.kogane.fairytalemod.worldgen.biome.ModTerraBlenderAPI;
+import net.kogane.fairytalemod.worldgen.biome.surface.ModSurfaceRules;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
@@ -35,6 +37,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import terrablender.api.SurfaceRuleManager;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(FairyTaleMod.MOD_ID)
@@ -56,6 +59,7 @@ public class FairyTaleMod
         ModEntities.register(modEventBus);
         ModFeatures.register(modEventBus);
         ModEnchantments.register(modEventBus);
+        ModTerraBlenderAPI.registerRegions();
 
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -64,7 +68,7 @@ public class FairyTaleMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
     }
 
     // Add the example block item to the building blocks tab

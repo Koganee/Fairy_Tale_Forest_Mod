@@ -1,7 +1,9 @@
 package net.kogane.fairytalemod.worldgen.biome;
 
 import net.kogane.fairytalemod.FairyTaleMod;
+import net.kogane.fairytalemod.worldgen.biome.custom.ModOverworldRegion;
 import net.minecraft.resources.ResourceLocation;
+import terrablender.api.Regions;
 
 public class ModTerraBlenderAPI {
     public static void registerRegions() {

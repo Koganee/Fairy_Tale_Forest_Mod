@@ -11,6 +11,7 @@ import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -19,13 +20,14 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CANDYCANE_TREE_PLACED_KEY = registerKey("candycane_tree_placed");
+    public static final ResourceKey<PlacedFeature> CANDYCANE_BLOCK_PLACED_KEY = registerKey("candycane_block_placed");
+    public static final ResourceKey<PlacedFeature> CHOCOLATE_BLOCK_PLACED_KEY = registerKey("chocolate_block_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -33,7 +35,14 @@ public class ModPlacedFeatures {
         register(context, CANDYCANE_TREE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CANDYCANE_TREE_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2),
                         ModBlocks.CANDYCANE_BLOCK.get()));
-
+        register(context, CANDYCANE_BLOCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CANDYCANE_BLOCK_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(50), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(50)),
+                        BiomeFilter.biome()));
+        register(context, CHOCOLATE_BLOCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CHOCOLATE_BLOCK_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(50), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(50)),
+                        BiomeFilter.biome()));
     }
 
 
