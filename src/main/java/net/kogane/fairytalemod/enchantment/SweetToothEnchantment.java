@@ -26,7 +26,7 @@ public class SweetToothEnchantment extends Enchantment {
             if(pAttacker.getOffhandItem().getItem() == ModItems.CANDYCANE.get())
             {
                 float baseDamage = pAttacker.getMainHandItem().getDamageValue();
-                float extraDamage = baseDamage + (pLevel * 10.0F);
+                float extraDamage = baseDamage + (pLevel * 8.0F);
 
                 pTarget.hurt(pAttacker.damageSources().magic(), extraDamage);
                 pAttacker.getOffhandItem().shrink(1);
