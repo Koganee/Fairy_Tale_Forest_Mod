@@ -33,7 +33,7 @@ public class ModPlacedFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, CANDYCANE_TREE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CANDYCANE_TREE_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 2),
                         ModBlocks.CANDYCANE_BLOCK.get()));
         register(context, CANDYCANE_BLOCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CANDYCANE_BLOCK_KEY),
                 List.of(RarityFilter.onAverageOnceEvery(50), InSquarePlacement.spread(),
