@@ -1,4 +1,4 @@
-// 1.20.1	2025-01-24T17:39:21.8629911	Registries
+// 1.20.1	2025-01-24T20:26:15.5718565	Registries
 ce6475d7557499f26213b0a1cd85462a09dab801 data/fairytalemod/forge/biome_modifier/add_tree_candycane.json
 cb18a459f3ce2cef7ee18a850674bf4d21fe2420 data/fairytalemod/worldgen/biome/test_biome.json
 2d66947884243a955de89cccc00e97ea531a3ebc data/fairytalemod/worldgen/biome/test_biome_2.json
@@ -6,5 +6,5 @@ cb18a459f3ce2cef7ee18a850674bf4d21fe2420 data/fairytalemod/worldgen/biome/test_b
 a880f3cf85a6e7138c65b7913e716089740e71f6 data/fairytalemod/worldgen/configured_feature/candycane_tree.json
 df9e3fba324e616021443e971aede20e97768568 data/fairytalemod/worldgen/configured_feature/chocolate_block.json
 da32b48b5ccce24188b38e97075efc8749fbb504 data/fairytalemod/worldgen/placed_feature/candycane_block_placed.json
-504408539276e0a249062caaa38619fb6f2d79f3 data/fairytalemod/worldgen/placed_feature/candycane_tree_placed.json
+6b3c18114320d3ea12223728233b6f0b9fb984ac data/fairytalemod/worldgen/placed_feature/candycane_tree_placed.json
 c49b8b5100f8694202f88f070f5127d683488ff2 data/fairytalemod/worldgen/placed_feature/chocolate_block_placed.json

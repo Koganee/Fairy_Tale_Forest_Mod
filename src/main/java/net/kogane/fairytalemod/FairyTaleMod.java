@@ -81,6 +81,11 @@ public class FairyTaleMod
         if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS)
         {
             event.accept(ModItems.CANDYCANE);
+            event.accept(ModItems.CHOCOLATE_ITEM);
+        }
+        if(event.getTabKey() == CreativeModeTabs.COMBAT)
+        {
+            event.accept(ModItems.CANDYCANE_BLADE);
         }
     }
 

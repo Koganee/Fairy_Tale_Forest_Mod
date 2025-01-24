@@ -11,6 +11,8 @@ import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -34,7 +36,7 @@ public class ModPlacedFeatures {
 
         register(context, CANDYCANE_TREE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CANDYCANE_TREE_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 2),
-                        ModBlocks.CANDYCANE_BLOCK.get()));
+                        Blocks.OAK_SAPLING));
         register(context, CANDYCANE_BLOCK_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CANDYCANE_BLOCK_KEY),
                 List.of(RarityFilter.onAverageOnceEvery(50), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(50)),

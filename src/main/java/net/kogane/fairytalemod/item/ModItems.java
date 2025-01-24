@@ -1,10 +1,9 @@
 package net.kogane.fairytalemod.item;
 
 import net.kogane.fairytalemod.FairyTaleMod;
+import net.kogane.fairytalemod.item.custom.CandycaneBladeItem;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.item.RecordItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
@@ -22,7 +21,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoodProperties.CANDYCANE)));
     public static final RegistryObject<Item> CHOCOLATE_ITEM = ITEMS.register("chocolate",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CHOCOLATE_ITEM)));
-
+    public static final RegistryObject<Item> CANDYCANE_BLADE = ITEMS.register("candycane_blade",
+            () -> new CandycaneBladeItem(Tiers.WOOD, 2, 3, new Item.Properties().durability(128)));
 
     public static void register(IEventBus eventBus)
     {

@@ -36,7 +36,10 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "fairytalemod:candycane_block"
+          "Name": "minecraft:oak_sapling",
+          "Properties": {
+            "stage": "0"
+          }
         }
       }
     }
