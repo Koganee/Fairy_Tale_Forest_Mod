@@ -17,17 +17,23 @@ import net.minecraftforge.eventbus.api.IEventBus;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, FairyTaleMod.MOD_ID);
+    
     public static final RegistryObject<Item> CANDYCANE = ITEMS.register("candycane",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CANDYCANE)));
     public static final RegistryObject<Item> CHOCOLATE_ITEM = ITEMS.register("chocolate",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CHOCOLATE_ITEM)));
     public static final RegistryObject<Item> CHOCOLATE_POTION = ITEMS.register("chocolate_potion",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CHOCOLATE_POTION)));
+
     public static final RegistryObject<Item> CANDYCANE_BLADE = ITEMS.register("candycane_blade",
             () -> new CandycaneBladeItem(Tiers.WOOD, 2, 3, new Item.Properties().durability(128)));
+
+    public static final RegistryObject<Item> FAIRY_GEM = ITEMS.register("fairy_gem",
+            () -> new Item(new Item.Properties().stacksTo(16)));
 
     public static void register(IEventBus eventBus)
     {
         ITEMS.register(eventBus);
     }
 }
+

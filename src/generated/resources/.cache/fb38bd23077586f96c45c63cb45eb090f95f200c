@@ -1,7 +1,8 @@
-// 1.20.1	2025-01-27T13:57:37.8491589	Item Models: fairytalemod
+// 1.20.1	2025-01-27T17:50:05.3541778	Item Models: fairytalemod
 3391e58aef9d31d6ef01db8503aced7173587c13 assets/fairytalemod/models/item/candycane.json
 31fd05b176d15ab2161a5bd10c6bdce72e390f09 assets/fairytalemod/models/item/candycane_blade.json
 76b99d7469330d553dcba1680709d30b12f9ed5f assets/fairytalemod/models/item/candycane_block.json
 9eb8d7932833efcdd9f45659aa29dc475a3e1aba assets/fairytalemod/models/item/chocolate.json
 462105e0bfa5f7f38c010ea6646d4e13f7bed58a assets/fairytalemod/models/item/chocolate_block.json
 165755f43f54ab8bc02672663a83df69e4881ed7 assets/fairytalemod/models/item/chocolate_potion.json
+2647452d91dc68677d6aa7df2d76da81e28bad3b assets/fairytalemod/models/item/fairy_gem.json
