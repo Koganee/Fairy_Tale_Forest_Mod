@@ -20,7 +20,7 @@ public class ModSurfaceRules {
         return SurfaceRules.sequence(
                 SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.TEST_BIOME),
                                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, GRASS_BLOCK)),
-                        SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, CANDYCANE)),
+                        SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, CHOCOLATE)),
 
                 SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.TEST_BIOME_2),
                                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, CHOCOLATE)),
