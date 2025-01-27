@@ -82,6 +82,7 @@ public class FairyTaleMod
         {
             event.accept(ModItems.CANDYCANE);
             event.accept(ModItems.CHOCOLATE_ITEM);
+            event.accept(ModItems.CHOCOLATE_POTION);
         }
         if(event.getTabKey() == CreativeModeTabs.COMBAT)
         {

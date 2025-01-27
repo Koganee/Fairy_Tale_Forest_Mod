@@ -1,6 +1,6 @@
-// 1.20.1	2025-01-24T20:26:15.5718565	Registries
+// 1.20.1	2025-01-27T13:57:37.8502361	Registries
 ce6475d7557499f26213b0a1cd85462a09dab801 data/fairytalemod/forge/biome_modifier/add_tree_candycane.json
-cb18a459f3ce2cef7ee18a850674bf4d21fe2420 data/fairytalemod/worldgen/biome/test_biome.json
+4abf6f0278651db8c370951831d962fe80dc4b6d data/fairytalemod/worldgen/biome/test_biome.json
 2d66947884243a955de89cccc00e97ea531a3ebc data/fairytalemod/worldgen/biome/test_biome_2.json
 2ca69305114ed84f1e336641fbace808f6eb37ea data/fairytalemod/worldgen/configured_feature/candycane_block.json
 a880f3cf85a6e7138c65b7913e716089740e71f6 data/fairytalemod/worldgen/configured_feature/candycane_tree.json

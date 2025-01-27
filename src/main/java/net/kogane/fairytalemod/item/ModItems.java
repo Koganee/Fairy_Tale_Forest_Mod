@@ -21,6 +21,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoodProperties.CANDYCANE)));
     public static final RegistryObject<Item> CHOCOLATE_ITEM = ITEMS.register("chocolate",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CHOCOLATE_ITEM)));
+    public static final RegistryObject<Item> CHOCOLATE_POTION = ITEMS.register("chocolate_potion",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.CHOCOLATE_POTION)));
     public static final RegistryObject<Item> CANDYCANE_BLADE = ITEMS.register("candycane_blade",
             () -> new CandycaneBladeItem(Tiers.WOOD, 2, 3, new Item.Properties().durability(128)));
 

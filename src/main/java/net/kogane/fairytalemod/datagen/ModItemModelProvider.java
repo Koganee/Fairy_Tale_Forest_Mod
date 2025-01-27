@@ -29,6 +29,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleBlockItem(ModBlocks.CANDYCANE_BLOCK);
         simpleItem(ModItems.CANDYCANE);
         simpleItem(ModItems.CHOCOLATE_ITEM);
+        simpleItem(ModItems.CHOCOLATE_POTION);
         simpleItem(ModItems.CANDYCANE_BLADE);
     }
 
