@@ -1,5 +1,6 @@
 package net.kogane.fairytalemod.datagen;
 
+import net.kogane.fairytalemod.item.ModItems;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -20,7 +21,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CANDYCANE_BLADE.get())
+                .pattern(" X ")
+                .pattern(" X ")
+                .pattern(" Y ")
+                .define('X', ModItems.CANDYCANE.get())
+                .define('Y', Items.STICK)
+                .unlockedBy("has_candycane", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.CANDYCANE.get()).build()))
+                .save(pWriter);
     }
 }
 

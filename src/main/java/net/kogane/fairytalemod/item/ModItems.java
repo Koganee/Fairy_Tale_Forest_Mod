@@ -22,11 +22,9 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoodProperties.CANDYCANE)));
     public static final RegistryObject<Item> CHOCOLATE_ITEM = ITEMS.register("chocolate",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CHOCOLATE_ITEM)));
-    public static final RegistryObject<Item> CHOCOLATE_POTION = ITEMS.register("chocolate_potion",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.CHOCOLATE_POTION)));
 
     public static final RegistryObject<Item> CANDYCANE_BLADE = ITEMS.register("candycane_blade",
-            () -> new CandycaneBladeItem(Tiers.WOOD, 2, 3, new Item.Properties().durability(128)));
+            () -> new CandycaneBladeItem(Tiers.WOOD, 2, 2, new Item.Properties().durability(64)));
 
     public static final RegistryObject<Item> FAIRY_GEM = ITEMS.register("fairy_gem",
             () -> new Item(new Item.Properties().stacksTo(16)));

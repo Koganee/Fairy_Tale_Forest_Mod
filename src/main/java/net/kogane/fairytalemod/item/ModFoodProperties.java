@@ -10,6 +10,4 @@ public class ModFoodProperties {
             .effect(() -> new MobEffectInstance(MobEffects.HEAL, 10), 0.1f).build();
     public static final FoodProperties CHOCOLATE_ITEM = new FoodProperties.Builder().nutrition(1).saturationMod(0.25f)
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20), 1.0f).build();
-    public static final FoodProperties CHOCOLATE_POTION = new FoodProperties.Builder().nutrition(3).saturationMod(0.25f)
-            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100), 1.0f).build();
 }

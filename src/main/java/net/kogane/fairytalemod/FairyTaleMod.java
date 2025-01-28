@@ -6,6 +6,8 @@ import net.kogane.fairytalemod.enchantment.ModEnchantments;
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.client.FancyPigRenderer;
 import net.kogane.fairytalemod.item.ModItems;
+import net.kogane.fairytalemod.potion.BetterBrewingRecipe;
+import net.kogane.fairytalemod.potion.ModPotions;
 import net.kogane.fairytalemod.worldgen.ModFeatures;
 import net.kogane.fairytalemod.worldgen.biome.ModTerraBlenderAPI;
 import net.kogane.fairytalemod.worldgen.biome.surface.ModSurfaceRules;
@@ -13,16 +15,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -58,6 +59,7 @@ public class FairyTaleMod
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModFeatures.register(modEventBus);
+        ModPotions.register(modEventBus);
         ModEnchantments.register(modEventBus);
         ModTerraBlenderAPI.registerRegions();
 
@@ -69,6 +71,8 @@ public class FairyTaleMod
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
+
+        BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.AWKWARD, ModItems.CHOCOLATE_ITEM.get(), ModPotions.CHOCOLATE_ELIXIR.get()));
     }
 
     // Add the example block item to the building blocks tab
@@ -83,7 +87,6 @@ public class FairyTaleMod
         {
             event.accept(ModItems.CANDYCANE);
             event.accept(ModItems.CHOCOLATE_ITEM);
-            event.accept(ModItems.CHOCOLATE_POTION);
         }
         if(event.getTabKey() == CreativeModeTabs.COMBAT)
         {

@@ -3,6 +3,7 @@ package net.kogane.fairytalemod.datagen;
 import net.kogane.fairytalemod.FairyTaleMod;
 import net.kogane.fairytalemod.block.ModBlocks;
 import net.kogane.fairytalemod.item.ModItems;
+import net.kogane.fairytalemod.potion.ModPotions;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -30,8 +31,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleBlockItem(ModBlocks.FAIRY_GEM_ORE_BLOCK);
         simpleItem(ModItems.CANDYCANE);
         simpleItem(ModItems.CHOCOLATE_ITEM);
-        simpleItem(ModItems.CHOCOLATE_POTION);
-        simpleItem(ModItems.CANDYCANE_BLADE);
+        handheldItem(ModItems.CANDYCANE_BLADE);
         simpleItem(ModItems.FAIRY_GEM);
     }
 
