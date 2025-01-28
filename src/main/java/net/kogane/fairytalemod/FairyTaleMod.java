@@ -5,6 +5,8 @@ import net.kogane.fairytalemod.block.ModBlocks;
 import net.kogane.fairytalemod.enchantment.ModEnchantments;
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.client.FancyPigRenderer;
+import net.kogane.fairytalemod.fluid.ModFluidTypes;
+import net.kogane.fairytalemod.fluid.ModFluids;
 import net.kogane.fairytalemod.item.ModItems;
 import net.kogane.fairytalemod.potion.BetterBrewingRecipe;
 import net.kogane.fairytalemod.potion.ModPotions;
@@ -12,6 +14,8 @@ import net.kogane.fairytalemod.worldgen.ModFeatures;
 import net.kogane.fairytalemod.worldgen.biome.ModTerraBlenderAPI;
 import net.kogane.fairytalemod.worldgen.biome.surface.ModSurfaceRules;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
@@ -62,6 +66,8 @@ public class FairyTaleMod
         ModPotions.register(modEventBus);
         ModEnchantments.register(modEventBus);
         ModTerraBlenderAPI.registerRegions();
+        ModFluidTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
 
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -95,6 +101,7 @@ public class FairyTaleMod
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
             event.accept(ModItems.FAIRY_GEM);
+            event.accept(ModItems.GEM_ESSENCE_BUCKET);
         }
     }
 
@@ -113,6 +120,11 @@ public class FairyTaleMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.FANCY_PIG.get(), FancyPigRenderer::new);
+
+            event.enqueueWork(() -> {
+                ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_GEM_ESSENCE.get(), RenderType.translucent());
+                ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_GEM_ESSENCE.get(), RenderType.translucent());
+            });
         }
     }
 }

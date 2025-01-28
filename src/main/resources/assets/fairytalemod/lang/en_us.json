@@ -2,11 +2,14 @@
   "block.fairytalemod.chocolate_block": "Chocolate Block",
   "block.fairytalemod.candycane_block": "Candycane Block",
   "block.fairytalemod.fairy_gem_ore_block": "Fairy Gem Ore",
+
   "item.fairytalemod.candycane": "Candycane",
   "item.fairytalemod.chocolate": "Chocolate",
   "item.fairytalemod.chocolate_elixir": "Chocolate Elixir",
   "item.fairytalemod.candycane_blade": "Candycane Blade",
   "item.fairytalemod.fairy_gem": "Fairy Gem",
+  "item.fairytalemod.gem_essence_bucket": "Gem Essence Bucket",
+
   "entity.fairytalemod.fancy_pig": "Fancy Pig",
 
   "enchantment.fairytalemod.wolfs_fang": "Wolf's Fang",

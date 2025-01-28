@@ -1,6 +1,7 @@
 package net.kogane.fairytalemod.block;
 
 import net.kogane.fairytalemod.FairyTaleMod;
+import net.kogane.fairytalemod.fluid.ModFluids;
 import net.kogane.fairytalemod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -30,6 +31,9 @@ public abstract class ModBlocks {
     public static final RegistryObject<Block> FAIRY_GEM_ORE_BLOCK = registerBlock("fairy_gem_ore_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .strength(1f), UniformInt.of(2, 5)));
+
+    public static final RegistryObject<LiquidBlock> GEM_ESSENCE_BLOCK = BLOCKS.register("gem_essence_block",
+            () -> new LiquidBlock(ModFluids.SOURCE_GEM_ESSENCE, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block)
     {

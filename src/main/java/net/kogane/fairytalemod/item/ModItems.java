@@ -1,6 +1,7 @@
 package net.kogane.fairytalemod.item;
 
 import net.kogane.fairytalemod.FairyTaleMod;
+import net.kogane.fairytalemod.fluid.ModFluids;
 import net.kogane.fairytalemod.item.custom.CandycaneBladeItem;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.*;
@@ -28,6 +29,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> FAIRY_GEM = ITEMS.register("fairy_gem",
             () -> new Item(new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> GEM_ESSENCE_BUCKET = ITEMS.register("gem_essence_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_GEM_ESSENCE, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static void register(IEventBus eventBus)
     {
