@@ -24,6 +24,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.CHOCOLATE_BLOCK);
         blockWithItem(ModBlocks.CANDYCANE_BLOCK);
+        blockWithItem(ModBlocks.FAIRY_GEM_ORE_BLOCK);
     }
 
     public void makeCrop(CropBlock block, String modelName, String textureName) {

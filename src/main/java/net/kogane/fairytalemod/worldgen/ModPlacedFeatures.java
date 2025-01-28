@@ -30,6 +30,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CANDYCANE_TREE_PLACED_KEY = registerKey("candycane_tree_placed");
     public static final ResourceKey<PlacedFeature> CANDYCANE_BLOCK_PLACED_KEY = registerKey("candycane_block_placed");
     public static final ResourceKey<PlacedFeature> CHOCOLATE_BLOCK_PLACED_KEY = registerKey("chocolate_block_placed");
+    public static final ResourceKey<PlacedFeature> FAIRY_GEM_ORE_PLACED_KEY = registerKey("fairy_gem_ore_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -45,6 +46,10 @@ public class ModPlacedFeatures {
                 List.of(RarityFilter.onAverageOnceEvery(50), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(50)),
                         BiomeFilter.biome()));
+
+        register(context, FAIRY_GEM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_FAIRY_GEM_ORE_KEY),
+                ModOrePlacement.commonOrePlacement(12,
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));
     }
 
 

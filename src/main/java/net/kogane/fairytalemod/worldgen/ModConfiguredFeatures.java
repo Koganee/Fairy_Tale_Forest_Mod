@@ -17,11 +17,15 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
@@ -29,9 +33,17 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CANDYCANE_TREE_KEY = registerKey("candycane_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CANDYCANE_BLOCK_KEY = registerKey("candycane_block");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CHOCOLATE_BLOCK_KEY = registerKey("chocolate_block");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_FAIRY_GEM_ORE_KEY = registerKey("fairy_gem_ore");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+        RuleTest stoneReplaceabeles = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
+        RuleTest deepslateReplaceabeles = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest netherrackReplaceabeles = new BlockMatchTest(Blocks.NETHERRACK);
+        RuleTest endReplaceabeles = new BlockMatchTest(Blocks.END_STONE);
 
+        List<OreConfiguration.TargetBlockState> overworldFairyGemOres = List.of(OreConfiguration.target(stoneReplaceabeles,
+                        ModBlocks.FAIRY_GEM_ORE_BLOCK.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceabeles, ModBlocks.FAIRY_GEM_ORE_BLOCK.get().defaultBlockState()));
 
         register(context, CANDYCANE_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.CANDYCANE_BLOCK.get()),
@@ -67,6 +79,8 @@ public class ModConfiguredFeatures {
                         true, UniformInt.of(3, 8),
                         UniformInt.of(2, 6), UniformInt.of(1, 2),
                         -18, 18, 0.075D, 1));
+
+        register(context, OVERWORLD_FAIRY_GEM_ORE_KEY, Feature.ORE, new OreConfiguration(overworldFairyGemOres, 9));
     }
 
 

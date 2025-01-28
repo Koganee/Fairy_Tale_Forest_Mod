@@ -1,6 +1,7 @@
 package net.kogane.fairytalemod.datagen;
 
 import net.kogane.fairytalemod.FairyTaleMod;
+import net.kogane.fairytalemod.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -19,6 +20,11 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.FAIRY_GEM_ORE_BLOCK.get());
+
+        this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.FAIRY_GEM_ORE_BLOCK.get());
     }
 
     @Override

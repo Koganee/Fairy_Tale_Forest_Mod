@@ -1,24 +1,39 @@
-[271월2025 18:14:36.692] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Administrator\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, fairytalemod, --all, --output, C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\src\generated\resources, --existing, C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\src\main\resources]
-[271월2025 18:14:36.703] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.14 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
-[271월2025 18:14:36.838] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[271월2025 18:14:36.902] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[271월2025 18:14:37.341] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.0\d7ebc62120f202109e300e084ca1a31a7b946a62\javafmllanguage-1.20.1-47.3.0.jar is missing mods.toml file
-[271월2025 18:14:37.356] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.0\1bf3e845ea0ce750096da8c71c8364b188ab74d4\lowcodelanguage-1.20.1-47.3.0.jar is missing mods.toml file
-[271월2025 18:14:37.359] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.0\6093682e943ddccbabf70539319d7f2fe64db2e7\mclanguage-1.20.1-47.3.0.jar is missing mods.toml file
-[271월2025 18:14:37.361] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.0\3b6be96aba3e323f3c918e8ef6a96312d82d76ad\fmlcore-1.20.1-47.3.0.jar is missing mods.toml file
-[271월2025 18:14:37.463] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[271월2025 18:14:39.127] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[271월2025 18:14:39.133] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Administrator\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, fairytalemod, --all, --output, C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\src\generated\resources, --existing, C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\src\main\resources]
-[271월2025 18:14:39.486] [main/INFO] [mixin/]: Remapping refMap terrablender.refmap.json using C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\build\createSrgToMcp\output.srg
-[271월2025 18:14:39.487] [main/INFO] [mixin/]: Remapping refMap terrablender.refmap.json using C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\build\createSrgToMcp\output.srg
-[271월2025 18:14:40.072] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [fairytalemod]
-[271월2025 18:14:44.507] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.0, for MC 1.20.1 with MCP 20230612.114412
-[271월2025 18:14:44.508] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.0 Initialized
-[271월2025 18:14:44.524] [modloading-worker-0/INFO] [terrablender/]: Registered region minecraft:overworld to index 0 for type OVERWORLD
-[271월2025 18:14:44.525] [modloading-worker-0/INFO] [terrablender/]: Registered region minecraft:nether to index 0 for type NETHER
-[271월2025 18:14:44.525] [modloading-worker-0/INFO] [terrablender/]: Registered region fairytalemod:overworld to index 1 for type OVERWORLD
-[271월2025 18:14:45.079] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Administrator/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.0_mapped_parchment_2023.09.03-1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[271월2025 18:14:45.080] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Administrator/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.0_mapped_parchment_2023.09.03-1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[271월2025 18:14:45.256] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[271월2025 18:14:45.263] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 6 ms
-[271월2025 18:14:45.263] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[281월2025 10:11:44.022] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Administrator\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, fairytalemod, --all, --output, C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\src\generated\resources, --existing, C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\src\main\resources]
+[281월2025 10:11:44.027] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.14 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[281월2025 10:11:44.107] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[281월2025 10:11:44.146] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Administrator/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[281월2025 10:11:44.368] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.0\d7ebc62120f202109e300e084ca1a31a7b946a62\javafmllanguage-1.20.1-47.3.0.jar is missing mods.toml file
+[281월2025 10:11:44.368] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.0\1bf3e845ea0ce750096da8c71c8364b188ab74d4\lowcodelanguage-1.20.1-47.3.0.jar is missing mods.toml file
+[281월2025 10:11:44.373] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.0\6093682e943ddccbabf70539319d7f2fe64db2e7\mclanguage-1.20.1-47.3.0.jar is missing mods.toml file
+[281월2025 10:11:44.373] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.0\3b6be96aba3e323f3c918e8ef6a96312d82d76ad\fmlcore-1.20.1-47.3.0.jar is missing mods.toml file
+[281월2025 10:11:44.435] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[281월2025 10:11:45.333] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[281월2025 10:11:45.338] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Administrator\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, fairytalemod, --all, --output, C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\src\generated\resources, --existing, C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\src\main\resources]
+[281월2025 10:11:45.558] [main/INFO] [mixin/]: Remapping refMap terrablender.refmap.json using C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\build\createSrgToMcp\output.srg
+[281월2025 10:11:45.558] [main/INFO] [mixin/]: Remapping refMap terrablender.refmap.json using C:\Users\Administrator\IdeaProjects\Fairy_Tale_Forest_Mod\build\createSrgToMcp\output.srg
+[281월2025 10:11:45.817] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [fairytalemod]
+[281월2025 10:11:48.997] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.0, for MC 1.20.1 with MCP 20230612.114412
+[281월2025 10:11:48.997] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.0 Initialized
+[281월2025 10:11:48.997] [modloading-worker-0/INFO] [terrablender/]: Registered region minecraft:overworld to index 0 for type OVERWORLD
+[281월2025 10:11:49.013] [modloading-worker-0/INFO] [terrablender/]: Registered region minecraft:nether to index 0 for type NETHER
+[281월2025 10:11:49.013] [modloading-worker-0/INFO] [terrablender/]: Registered region fairytalemod:overworld to index 1 for type OVERWORLD
+[281월2025 10:11:49.309] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Administrator/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.0_mapped_parchment_2023.09.03-1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[281월2025 10:11:49.309] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Administrator/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.0_mapped_parchment_2023.09.03-1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[281월2025 10:11:49.394] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[281월2025 10:11:49.394] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 1 ms
+[281월2025 10:11:49.394] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[281월2025 10:11:49.425] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 30 ms
+[281월2025 10:11:49.425] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block Tags
+[281월2025 10:11:49.525] [main/INFO] [net.minecraft.data.DataGenerator/]: Block Tags finished after 98 ms
+[281월2025 10:11:49.525] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Tags
+[281월2025 10:11:49.525] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Tags finished after 0 ms
+[281월2025 10:11:49.525] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: fairytalemod
+[281월2025 10:11:49.525] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: fairytalemod finished after 6 ms
+[281월2025 10:11:49.525] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: fairytalemod
+[281월2025 10:11:49.614] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: fairytalemod finished after 88 ms
+[281월2025 10:11:49.614] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : fairytalemod
+[281월2025 10:11:49.614] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : fairytalemod finished after 1 ms
+[281월2025 10:11:49.614] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[281월2025 10:11:49.647] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 20 ms
+[281월2025 10:11:49.647] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 250 ms
+[281월2025 10:11:49.647] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 32, old count: 35, new count: 33, removed stale: 0, written: 1
