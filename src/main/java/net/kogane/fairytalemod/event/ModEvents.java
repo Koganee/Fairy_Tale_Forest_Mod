@@ -3,9 +3,12 @@ package net.kogane.fairytalemod.event;
 import net.kogane.fairytalemod.FairyTaleMod;
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.custom.FancyPigEntity;
+import net.kogane.fairytalemod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -30,9 +33,26 @@ public class ModEvents {
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event)
     {
+        Player player = event.player;
+        ItemStack mainHandItem = player.getMainHandItem();
 
+        // Check if the item in the player's main hand is the specific item
+        if (mainHandItem.getItem() == ModItems.SWEET_BOOSTED_BLADE.get()) {
+            player.addEffect(new MobEffectInstance(new MobEffectInstance(MobEffects.MOVEMENT_SPEED)));
+        }
     }
 
+    @SubscribeEvent
+    public static void onItemUse(PlayerInteractEvent.RightClickBlock event) {
+        LivingEntity entity = event.getEntity();
+        Player player = (Player) entity;
+        Level level = event.getLevel();
+        ItemStack itemStack = event.getItemStack();
+
+        if (itemStack.getItem() == ModItems.SWEET_BOOSTED_BLADE.get()) {
+            player.addEffect(new MobEffectInstance(new MobEffectInstance(MobEffects.JUMP, 20, 5)));
+        }
+    }
 
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {

@@ -32,6 +32,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.CANDYCANE);
         simpleItem(ModItems.CHOCOLATE_ITEM);
         handheldItem(ModItems.CANDYCANE_BLADE);
+        handheldItem(ModItems.SWEET_BOOSTED_BLADE);
+        handheldItem(ModItems.CHOCOLATE_CLUB);
         simpleItem(ModItems.FAIRY_GEM);
         simpleItem(ModItems.GEM_ESSENCE_BUCKET);
     }
