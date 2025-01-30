@@ -36,6 +36,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.CHOCOLATE_CLUB);
         simpleItem(ModItems.FAIRY_GEM);
         simpleItem(ModItems.GEM_ESSENCE_BUCKET);
+        simpleItem(ModItems.GEM_ESSENCE_EXTRACT_BOTTLE);
     }
 
     private ItemModelBuilder handheldItem(RegistryObject<Item> item) {

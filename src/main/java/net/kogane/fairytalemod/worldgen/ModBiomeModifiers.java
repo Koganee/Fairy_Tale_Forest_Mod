@@ -1,6 +1,7 @@
 package net.kogane.fairytalemod.worldgen;
 
 import net.kogane.fairytalemod.FairyTaleMod;
+import net.kogane.fairytalemod.worldgen.biome.ModBiomes;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -28,7 +29,7 @@ public class ModBiomeModifiers {
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_FAIRY_GEM_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                biomes.getOrThrow(Tags.Biomes.IS_MODIFIED),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.FAIRY_GEM_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
     }

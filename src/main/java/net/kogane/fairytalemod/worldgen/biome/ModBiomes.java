@@ -36,7 +36,7 @@ public class ModBiomes {
 
     public static Biome testBiome(BootstapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.FANCY_PIG.get(), 4, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.FANCY_PIG.get(), 6, 1, 1));
 
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 5, 4, 4));
 
@@ -57,6 +57,7 @@ public class ModBiomes {
 
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.FAIRY_GEM_ORE_PLACED_KEY);
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.CANDYCANE_BLOCK_PLACED_KEY);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CHOCOLATE_BLOCK_PLACED_KEY);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CANDYCANE_TREE_PLACED_KEY);

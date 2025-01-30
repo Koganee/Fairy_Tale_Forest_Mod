@@ -83,7 +83,7 @@ public class ModConfiguredFeatures {
                         -18, 18, 0.075D, 1));
 
 
-        register(context, OVERWORLD_FAIRY_GEM_ORE_KEY, Feature.ORE, new OreConfiguration(overworldFairyGemOres, 9));
+        register(context, OVERWORLD_FAIRY_GEM_ORE_KEY, Feature.ORE, new OreConfiguration(overworldFairyGemOres, 4));
     }
 
 

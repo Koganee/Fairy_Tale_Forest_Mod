@@ -104,6 +104,7 @@ public class FairyTaleMod
         {
             event.accept(ModItems.FAIRY_GEM);
             event.accept(ModItems.GEM_ESSENCE_BUCKET);
+            event.accept(ModItems.GEM_ESSENCE_EXTRACT_BOTTLE);
         }
     }
 
