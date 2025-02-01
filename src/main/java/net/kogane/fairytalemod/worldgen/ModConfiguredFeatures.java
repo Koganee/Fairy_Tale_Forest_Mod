@@ -36,6 +36,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CANDYCANE_BLOCK_KEY = registerKey("candycane_block");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CHOCOLATE_BLOCK_KEY = registerKey("chocolate_block");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_FAIRY_GEM_ORE_KEY = registerKey("fairy_gem_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_FAIRY_GEM_ESSENCE_KEY = registerKey("fairy_gem_essence");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceabeles = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -75,6 +76,20 @@ public class ModConfiguredFeatures {
                         BlockStateProvider.simple(Blocks.DIRT),
                         BlockStateProvider.simple(Blocks.EMERALD_BLOCK),
                         List.of(ModBlocks.CHOCOLATE_BLOCK.get().defaultBlockState()),
+                        BlockTags.FEATURES_CANNOT_REPLACE , BlockTags.GEODE_INVALID_BLOCKS),
+                        new GeodeLayerSettings(1.7D, 1.2D, 2.5D, 3.5D),
+                        new GeodeCrackSettings(0.25D, 1.5D, 1), 0.5D, 0.1D,
+                        true, UniformInt.of(3, 8),
+                        UniformInt.of(2, 6), UniformInt.of(1, 2),
+                        -18, 18, 0.075D, 1));
+
+        register(context, OVERWORLD_FAIRY_GEM_ESSENCE_KEY, Feature.GEODE,
+                new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR),
+                        BlockStateProvider.simple(Blocks.DEEPSLATE),
+                        BlockStateProvider.simple(ModBlocks.GEM_ESSENCE_BLOCK.get()),
+                        BlockStateProvider.simple(Blocks.DIRT),
+                        BlockStateProvider.simple(Blocks.EMERALD_BLOCK),
+                        List.of(ModBlocks.GEM_ESSENCE_BLOCK.get().defaultBlockState()),
                         BlockTags.FEATURES_CANNOT_REPLACE , BlockTags.GEODE_INVALID_BLOCKS),
                         new GeodeLayerSettings(1.7D, 1.2D, 2.5D, 3.5D),
                         new GeodeCrackSettings(0.25D, 1.5D, 1), 0.5D, 0.1D,
