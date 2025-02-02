@@ -9,4 +9,7 @@ public class ModModelLayers {
     public static final ModelLayerLocation FANCY_PIG_LAYER = new ModelLayerLocation(
             new ResourceLocation(FairyTaleMod.MOD_ID, "fancy_pig_layer"), "fancy_pig_layer");
 
+    public static final ModelLayerLocation GEM_ESSENCE_FAIRY_LAYER = new ModelLayerLocation(
+            new ResourceLocation(FairyTaleMod.MOD_ID, "gem_essence_fairy_layer"), "gem_essence_fairy_layer");
+
 }
