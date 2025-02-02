@@ -88,7 +88,7 @@ public class ModConfiguredFeatures {
                         BlockStateProvider.simple(Blocks.DEEPSLATE),
                         BlockStateProvider.simple(ModBlocks.GEM_ESSENCE_BLOCK.get()),
                         BlockStateProvider.simple(Blocks.DIRT),
-                        BlockStateProvider.simple(Blocks.EMERALD_BLOCK),
+                        BlockStateProvider.simple(Blocks.LAPIS_BLOCK),
                         List.of(ModBlocks.GEM_ESSENCE_BLOCK.get().defaultBlockState()),
                         BlockTags.FEATURES_CANNOT_REPLACE , BlockTags.GEODE_INVALID_BLOCKS),
                         new GeodeLayerSettings(1.7D, 1.2D, 2.5D, 3.5D),

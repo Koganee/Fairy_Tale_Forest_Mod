@@ -61,7 +61,7 @@ public class ModBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.CANDYCANE_BLOCK_PLACED_KEY);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CHOCOLATE_BLOCK_PLACED_KEY);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CANDYCANE_TREE_PLACED_KEY);
-        biomeBuilder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, ModPlacedFeatures.FAIRY_GEM_ESSENCE_PLACED_KEY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, ModPlacedFeatures.FAIRY_GEM_ESSENCE_PLACED_KEY);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
