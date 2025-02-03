@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 
-public class GemEssenceFairyEntity extends Animal {
+public class GemEssenceFairyEntity extends Mob {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
 
@@ -29,8 +29,6 @@ public class GemEssenceFairyEntity extends Animal {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-
-        this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.00));
 
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 4.00f));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
@@ -74,8 +72,8 @@ public class GemEssenceFairyEntity extends Animal {
         }
     }
 
-    @Override
+
     public @Nullable AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return ModEntities.FANCY_PIG.get().create(pLevel);
+        return ModEntities.GEM_ESSENCE_FAIRY.get().create(pLevel);
     }
 }

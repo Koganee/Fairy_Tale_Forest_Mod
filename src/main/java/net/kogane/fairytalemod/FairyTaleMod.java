@@ -5,6 +5,7 @@ import net.kogane.fairytalemod.block.ModBlocks;
 import net.kogane.fairytalemod.enchantment.ModEnchantments;
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.client.FancyPigRenderer;
+import net.kogane.fairytalemod.entity.client.GemEssenceFairyRenderer;
 import net.kogane.fairytalemod.fluid.ModFluidTypes;
 import net.kogane.fairytalemod.fluid.ModFluids;
 import net.kogane.fairytalemod.item.ModItems;
@@ -123,6 +124,7 @@ public class FairyTaleMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.FANCY_PIG.get(), FancyPigRenderer::new);
+            EntityRenderers.register(ModEntities.GEM_ESSENCE_FAIRY.get(), GemEssenceFairyRenderer::new);
 
             event.enqueueWork(() -> {
                 ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_GEM_ESSENCE.get(), RenderType.translucent());
