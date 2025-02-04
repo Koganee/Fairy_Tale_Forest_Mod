@@ -1,7 +1,10 @@
 package net.kogane.fairytalemod.entity.custom;
 
 import net.kogane.fairytalemod.entity.ModEntities;
+import net.kogane.fairytalemod.item.ModItems;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -9,21 +12,21 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.ForgeEventFactory;
 
 import javax.annotation.Nullable;
 
-public class GemEssenceFairyEntity extends Mob {
+public class GemEssenceFairyEntity extends TamableAnimal {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
 
-    private final TamableAnimal tamable;
-    private final RangedAttackMob rangedAttackMob;
 
-    public GemEssenceFairyEntity(EntityType<? extends Animal> pEntityType, Level pLevel, TamableAnimal tamable, RangedAttackMob rangedAttackMob) {
+    public GemEssenceFairyEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.tamable = tamable;
-        this.rangedAttackMob = rangedAttackMob;
     }
 
     @Override
@@ -32,8 +35,6 @@ public class GemEssenceFairyEntity extends Mob {
 
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 4.00f));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(0, new FollowOwnerGoal(tamable, 2, 0, 100, true));
-        this.goalSelector.addGoal(1, new RangedAttackGoal(rangedAttackMob, 1.5, 3, 10));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -75,5 +76,43 @@ public class GemEssenceFairyEntity extends Mob {
 
     public @Nullable AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
         return ModEntities.GEM_ESSENCE_FAIRY.get().create(pLevel);
+    }
+
+    @Override
+    public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
+        Item item = itemstack.getItem();
+
+        Item itemForTaming  = ModItems.FAIRY_GEM.get();
+
+        if(item == itemForTaming && !isTame()) {
+            if(this.level().isClientSide()) {
+                return InteractionResult.CONSUME;
+            } else {
+                if (!pPlayer.getAbilities().instabuild) {
+                    itemstack.shrink(1);
+                }
+
+                if (!ForgeEventFactory.onAnimalTame(this, pPlayer)) {
+                    super.tame(pPlayer);
+                    this.navigation.recomputePath();
+                    this.setTarget(null);
+                    this.level().broadcastEntityEvent(this, (byte)7);
+                    setOrderedToSit(true);
+                    this.setInSittingPose(true);
+                }
+
+                return InteractionResult.SUCCESS;
+            }
+        }
+
+        // TOGGLES SITTING FOR OUR ENTITY
+        if(isTame() && pHand == InteractionHand.MAIN_HAND) {
+            setOrderedToSit(!isOrderedToSit());
+            setInSittingPose(!isOrderedToSit());
+            return InteractionResult.SUCCESS;
+        }
+
+        return super.mobInteract(pPlayer, pHand);
     }
 }

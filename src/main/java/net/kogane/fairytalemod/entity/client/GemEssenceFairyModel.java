@@ -21,7 +21,6 @@ import net.minecraft.world.entity.Entity;
 
 public class GemEssenceFairyModel<T extends Entity> extends EntityModel<T> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("fairytalemod", "gem_essence_fairy"), "main");
     private final ModelPart root;
     private final ModelPart head;
     private final ModelPart body;
