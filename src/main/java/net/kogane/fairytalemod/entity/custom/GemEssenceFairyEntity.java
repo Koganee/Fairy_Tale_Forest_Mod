@@ -35,6 +35,7 @@ public class GemEssenceFairyEntity extends TamableAnimal {
 
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 4.00f));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(1, new FollowOwnerGoal(this, 1.25, 0.00f, 100.00f, true));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
