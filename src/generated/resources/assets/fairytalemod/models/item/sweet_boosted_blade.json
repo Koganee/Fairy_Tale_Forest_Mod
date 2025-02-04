@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "fairytalemod:item/sweet_boosted_blade"
+  }
+}

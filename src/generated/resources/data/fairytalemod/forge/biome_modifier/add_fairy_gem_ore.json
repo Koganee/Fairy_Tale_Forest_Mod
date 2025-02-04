@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#forge:is_modified",
+  "features": "fairytalemod:fairy_gem_ore_placed",
+  "step": "underground_ores"
+}

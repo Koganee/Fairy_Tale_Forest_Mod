@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "fairytalemod:candycane"
+    },
+    "Y": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " X ",
+    " X ",
+    " Y "
+  ],
+  "result": {
+    "item": "fairytalemod:candycane_blade"
+  },
+  "show_notification": true
+}
