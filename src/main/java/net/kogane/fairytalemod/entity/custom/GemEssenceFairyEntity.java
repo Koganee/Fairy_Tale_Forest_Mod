@@ -17,6 +17,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import javax.annotation.Nullable;
 
@@ -34,8 +36,10 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         this.goalSelector.addGoal(0, new FloatGoal(this));
 
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 4.00f));
-        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(1, new FollowOwnerGoal(this, 1.25, 0.00f, 100.00f, true));
+        this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.00));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -116,4 +120,19 @@ public class GemEssenceFairyEntity extends TamableAnimal {
 
         return super.mobInteract(pPlayer, pHand);
     }
+
+    @Override
+    public boolean canAttack(LivingEntity pTarget) {
+        if(pTarget instanceof Mob) {
+            super.canAttack(pTarget);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean wantsToAttack(LivingEntity pTarget, LivingEntity pOwner)
+    {
+        return true;
+    }
+
 }
