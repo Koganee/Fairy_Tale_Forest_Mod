@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
@@ -111,12 +112,24 @@ public class GemEssenceFairyEntity extends TamableAnimal {
             }
         }
 
+        if(isTame() && pHand == InteractionHand.MAIN_HAND && item == ModItems.CANDYCANE.get())
+        {
+            itemstack.shrink(1);
+
+            this.jumping = true;
+            this.setInSittingPose(false);
+            this.canHoldItem(itemstack);
+            this.equipItemIfPossible(itemstack);
+        }
+
         // TOGGLES SITTING FOR OUR ENTITY
         if(isTame() && pHand == InteractionHand.MAIN_HAND) {
             setOrderedToSit(!isOrderedToSit());
             setInSittingPose(!isOrderedToSit());
             return InteractionResult.SUCCESS;
         }
+
+
 
         return super.mobInteract(pPlayer, pHand);
     }
