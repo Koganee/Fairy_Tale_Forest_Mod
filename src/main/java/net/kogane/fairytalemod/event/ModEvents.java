@@ -1,6 +1,7 @@
 package net.kogane.fairytalemod.event;
 
 import net.kogane.fairytalemod.FairyTaleMod;
+import net.kogane.fairytalemod.block.ModBlocks;
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.custom.FancyPigEntity;
 import net.kogane.fairytalemod.entity.custom.GemEssenceFairyEntity;
@@ -52,6 +53,25 @@ public class ModEvents {
 
         if (itemStack.getItem() == ModItems.SWEET_BOOSTED_BLADE.get()) {
             player.addEffect(new MobEffectInstance(new MobEffectInstance(MobEffects.JUMP, 20, 5)));
+        }
+    }
+
+    @SubscribeEvent
+    public static void onItemUseEmpty(PlayerInteractEvent.RightClickEmpty event)
+    {
+        LivingEntity entity = event.getEntity();
+        Player player = (Player) entity;
+        Level level = event.getLevel();
+        ItemStack itemStack = event.getItemStack();
+        ItemStack gemEssenceBucket = new ItemStack(ModItems.GEM_ESSENCE_BUCKET.get());
+
+        if(itemStack.getItem() == Items.GLASS_BOTTLE)
+        {
+            if(player.getOffhandItem() == gemEssenceBucket)
+            {
+                itemStack.shrink(1);
+                player.addItem(new ItemStack(ModItems.GEM_ESSENCE_EXTRACT_BOTTLE.get()));
+            }
         }
     }
 
