@@ -118,8 +118,6 @@ public class GemEssenceFairyEntity extends TamableAnimal {
 
             this.jumping = true;
             this.setInSittingPose(false);
-            this.canHoldItem(itemstack);
-            this.equipItemIfPossible(itemstack);
         }
 
         // TOGGLES SITTING FOR OUR ENTITY

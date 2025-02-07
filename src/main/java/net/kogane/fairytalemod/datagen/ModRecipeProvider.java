@@ -30,6 +30,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_candycane", inventoryTrigger(ItemPredicate.Builder.item().
                         of(ModItems.CANDYCANE.get()).build()))
                 .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CHOCOLATE_CLUB.get())
+                .pattern("XXX")
+                .pattern("XYX")
+                .pattern(" Y ")
+                .define('X', ModItems.CHOCOLATE_ITEM.get())
+                .define('Y', Items.STICK)
+                .unlockedBy("has_chocolate", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.CHOCOLATE_ITEM.get()).build()))
+                .save(pWriter);
     }
 }
 
