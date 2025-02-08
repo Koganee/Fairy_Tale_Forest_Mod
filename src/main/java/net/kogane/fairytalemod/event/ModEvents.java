@@ -16,6 +16,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.PolarBear;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -57,19 +58,18 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void onItemUseEmpty(PlayerInteractEvent.RightClickEmpty event)
+    public static void onItemUseEmpty(PlayerInteractEvent.RightClickItem event)
     {
         LivingEntity entity = event.getEntity();
         Player player = (Player) entity;
         Level level = event.getLevel();
-        ItemStack itemStack = event.getItemStack();
+        Item item = event.getItemStack().getItem();
         ItemStack gemEssenceBucket = new ItemStack(ModItems.GEM_ESSENCE_BUCKET.get());
 
-        if(itemStack.getItem() == Items.GLASS_BOTTLE)
+        if(item == Items.GLASS_BOTTLE)
         {
-            if(player.getOffhandItem() == gemEssenceBucket)
+            if(player.getOffhandItem().equals(gemEssenceBucket))
             {
-                itemStack.shrink(1);
                 player.addItem(new ItemStack(ModItems.GEM_ESSENCE_EXTRACT_BOTTLE.get()));
             }
         }

@@ -24,7 +24,7 @@ public class GemEssenceFairyRenderer extends MobRenderer<GemEssenceFairyEntity, 
     public void render(GemEssenceFairyEntity pEntity, float pEntityYaw, float pPartialTicks,
                        PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
         if(pEntity.isBaby()) {
-            pMatrixStack.scale(0.45f, 0.45f, 0.45f);
+            pMatrixStack.scale(0.05f, 0.05f, 0.05f);
         }
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
