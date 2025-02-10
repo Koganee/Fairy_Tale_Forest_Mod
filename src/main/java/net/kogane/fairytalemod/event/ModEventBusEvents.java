@@ -28,8 +28,4 @@ public class ModEventBusEvents {
         event.put(ModEntities.FANCY_PIG.get(), FancyPigEntity.createAttributes().build());
         event.put(ModEntities.GEM_ESSENCE_FAIRY.get(), GemEssenceFairyEntity.createAttributes().build());
     }
-    @SubscribeEvent
-    public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(ModParticles.GEM_ESSENCE_PARTICLES.get(), GemEssenceParticles.Provider::new);
-    }
 }

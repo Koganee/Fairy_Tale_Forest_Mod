@@ -33,6 +33,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.net.ContentHandler;
 
 public class GemEssenceFairyEntity extends TamableAnimal {
     public final AnimationState idleAnimationState = new AnimationState();
@@ -96,6 +97,10 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         return ModEntities.GEM_ESSENCE_FAIRY.get().create(pLevel);
     }
 
+
+    public InteractionResult useOn(UseOnContext pContext) {
+        
+    }
     @Override
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
@@ -127,7 +132,7 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         if(isTame() && item == ModItems.CANDYCANE.get())
         {
             BlockPos positionClicked = this.blockPosition();
-            ServerLevel pContext = (ServerLevel)this.level();
+            UseOnContext pContext = this.level();
 
             itemstack.shrink(1);
 
@@ -150,8 +155,8 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         return super.mobInteract(pPlayer, pHand);
     }
 
-        private void spawnFoundParticles(ServerLevel pContext, BlockPos positionClicked) {
-        for(int i = 0; i < 20; i++) {
+    private void spawnFoundParticles(UseOnContext pContext, BlockPos positionClicked) {
+        for (int i = 0; i < 20; i++) {
             ServerLevel level = (ServerLevel) pContext.getLevel();
 
             level.sendParticles(ModParticles.GEM_ESSENCE_PARTICLES.get(),

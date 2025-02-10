@@ -40,7 +40,7 @@ public class ModItems {
     public static final RegistryObject<Item> FAIRY_GEM = ITEMS.register("fairy_gem",
             () -> new Item(new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> GEM_ESSENCE_EXTRACT_BOTTLE = ITEMS.register("gem_essence_extract_bottle",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+            () -> new BottleItem(new Item.Properties().stacksTo(1)));
 
     //Liquid-----------------------------------------------------------------------------------------
     public static final RegistryObject<Item> GEM_ESSENCE_BUCKET = ITEMS.register("gem_essence_bucket",
