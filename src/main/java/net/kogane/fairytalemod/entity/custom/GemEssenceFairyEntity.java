@@ -97,10 +97,6 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         return ModEntities.GEM_ESSENCE_FAIRY.get().create(pLevel);
     }
 
-
-    public InteractionResult useOn(UseOnContext pContext) {
-        
-    }
     @Override
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
@@ -132,14 +128,13 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         if(isTame() && item == ModItems.CANDYCANE.get())
         {
             BlockPos positionClicked = this.blockPosition();
-            UseOnContext pContext = this.level();
 
             itemstack.shrink(1);
 
             this.jumping = true;
             this.setInSittingPose(false);
 
-            spawnFoundParticles(pContext, positionClicked);
+            //spawnFoundParticles(pContext, positionClicked);
             setRiding(pPlayer);
         }
 
@@ -148,6 +143,7 @@ public class GemEssenceFairyEntity extends TamableAnimal {
             setOrderedToSit(!isOrderedToSit());
             setInSittingPose(!isOrderedToSit());
             return InteractionResult.SUCCESS;
+
         }
 
 
@@ -155,15 +151,15 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         return super.mobInteract(pPlayer, pHand);
     }
 
-    private void spawnFoundParticles(UseOnContext pContext, BlockPos positionClicked) {
+    /*private void spawnFoundParticles(UseOnContext pContext, BlockPos positionClicked) {
         for (int i = 0; i < 20; i++) {
-            ServerLevel level = (ServerLevel) pContext.getLevel();
+            ServerLevel level = pContext.getLevel();
 
             level.sendParticles(ModParticles.GEM_ESSENCE_PARTICLES.get(),
                     positionClicked.getX() + 0.5d, positionClicked.getY() + 1, positionClicked.getZ() + 0.5d, 1,
                     Math.cos(i * 18) * 0.15d, 0.15d, Math.sin(i * 18) * 0.15d, 0.1);
         }
-    }
+    }*/
 
     @Override
     public boolean canAttack(LivingEntity pTarget) {
@@ -182,7 +178,7 @@ public class GemEssenceFairyEntity extends TamableAnimal {
     private void setRiding(Player pPlayer) {
         this.setInSittingPose(false);
 
-        pPlayer.setYRot(this.getYRot());
+        pPlayer.setYRot(this.getYRot() - 20);
         pPlayer.setXRot(this.getXRot());
         pPlayer.startRiding(this);
     }
