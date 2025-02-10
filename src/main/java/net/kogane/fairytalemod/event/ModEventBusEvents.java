@@ -6,8 +6,11 @@ import net.kogane.fairytalemod.entity.client.FancyPigModel;
 import net.kogane.fairytalemod.entity.client.GemEssenceFairyModel;
 import net.kogane.fairytalemod.entity.custom.FancyPigEntity;
 import net.kogane.fairytalemod.entity.custom.GemEssenceFairyEntity;
+import net.kogane.fairytalemod.particle.GemEssenceParticles;
+import net.kogane.fairytalemod.particle.ModParticles;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.kogane.fairytalemod.entity.layers.ModModelLayers;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -24,6 +27,9 @@ public class ModEventBusEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.FANCY_PIG.get(), FancyPigEntity.createAttributes().build());
         event.put(ModEntities.GEM_ESSENCE_FAIRY.get(), GemEssenceFairyEntity.createAttributes().build());
-}
-
+    }
+    @SubscribeEvent
+    public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(ModParticles.GEM_ESSENCE_PARTICLES.get(), GemEssenceParticles.Provider::new);
+    }
 }

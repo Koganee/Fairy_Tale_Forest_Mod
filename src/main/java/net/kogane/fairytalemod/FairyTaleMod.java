@@ -9,6 +9,7 @@ import net.kogane.fairytalemod.entity.client.GemEssenceFairyRenderer;
 import net.kogane.fairytalemod.fluid.ModFluidTypes;
 import net.kogane.fairytalemod.fluid.ModFluids;
 import net.kogane.fairytalemod.item.ModItems;
+import net.kogane.fairytalemod.particle.ModParticles;
 import net.kogane.fairytalemod.potion.BetterBrewingRecipe;
 import net.kogane.fairytalemod.potion.ModPotions;
 import net.kogane.fairytalemod.worldgen.ModFeatures;
@@ -69,7 +70,7 @@ public class FairyTaleMod
         ModTerraBlenderAPI.registerRegions();
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
-
+        ModParticles.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

@@ -2,6 +2,7 @@ package net.kogane.fairytalemod.entity.custom;
 
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.item.ModItems;
+import net.kogane.fairytalemod.particle.ModParticles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,7 +22,9 @@ import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -123,11 +126,15 @@ public class GemEssenceFairyEntity extends TamableAnimal {
 
         if(isTame() && item == ModItems.CANDYCANE.get())
         {
+            BlockPos positionClicked = this.blockPosition();
+            ServerLevel pContext = (ServerLevel)this.level();
+
             itemstack.shrink(1);
 
             this.jumping = true;
             this.setInSittingPose(false);
 
+            spawnFoundParticles(pContext, positionClicked);
             setRiding(pPlayer);
         }
 
@@ -141,6 +148,16 @@ public class GemEssenceFairyEntity extends TamableAnimal {
 
 
         return super.mobInteract(pPlayer, pHand);
+    }
+
+        private void spawnFoundParticles(ServerLevel pContext, BlockPos positionClicked) {
+        for(int i = 0; i < 20; i++) {
+            ServerLevel level = (ServerLevel) pContext.getLevel();
+
+            level.sendParticles(ModParticles.GEM_ESSENCE_PARTICLES.get(),
+                    positionClicked.getX() + 0.5d, positionClicked.getY() + 1, positionClicked.getZ() + 0.5d, 1,
+                    Math.cos(i * 18) * 0.15d, 0.15d, Math.sin(i * 18) * 0.15d, 0.1);
+        }
     }
 
     @Override
