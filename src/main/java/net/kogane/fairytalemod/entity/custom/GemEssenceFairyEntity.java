@@ -131,10 +131,12 @@ public class GemEssenceFairyEntity extends TamableAnimal {
 
             itemstack.shrink(1);
 
-            this.jumping = true;
+            this.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 200, 0));
             this.setInSittingPose(false);
 
-            //spawnFoundParticles(pContext, positionClicked);
+            if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
+                spawnFoundParticles((ServerLevel) serverLevel, positionClicked);
+            }
             setRiding(pPlayer);
         }
 
@@ -151,15 +153,13 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         return super.mobInteract(pPlayer, pHand);
     }
 
-    /*private void spawnFoundParticles(UseOnContext pContext, BlockPos positionClicked) {
+    private void spawnFoundParticles(ServerLevel level, BlockPos positionClicked) {
         for (int i = 0; i < 20; i++) {
-            ServerLevel level = pContext.getLevel();
-
             level.sendParticles(ModParticles.GEM_ESSENCE_PARTICLES.get(),
                     positionClicked.getX() + 0.5d, positionClicked.getY() + 1, positionClicked.getZ() + 0.5d, 1,
                     Math.cos(i * 18) * 0.15d, 0.15d, Math.sin(i * 18) * 0.15d, 0.1);
         }
-    }*/
+    }
 
     @Override
     public boolean canAttack(LivingEntity pTarget) {
@@ -189,6 +189,7 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         return ((LivingEntity) this.getFirstPassenger());
     }
 
+
     @Override
     public void travel(Vec3 pTravelVector) {
         if(this.isVehicle() && getControllingPassenger() instanceof Player) {
@@ -207,7 +208,13 @@ public class GemEssenceFairyEntity extends TamableAnimal {
                 float newSpeed = (float) this.getAttributeValue(Attributes.MOVEMENT_SPEED);
                 // increasing speed by 100% if the spring key is held down (number for testing purposes)
                 if(Minecraft.getInstance().options.keySprint.isDown()) {
-                    newSpeed *= 2f;
+                    newSpeed *= 1.0f;
+                }
+                if(Minecraft.getInstance().options.keyJump.isDown()) {
+                    if (!this.level().isClientSide()) {
+                        this.removeEffect(MobEffects.LEVITATION);
+                    }
+                    this.removeLevitationEffect();
                 }
 
                 this.setSpeed(newSpeed);
@@ -244,5 +251,21 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         }
 
         return super.getDismountLocationForPassenger(pLivingEntity);
+    }
+
+    @Override
+    protected void positionRider(Entity passenger, MoveFunction moveFunction) {
+        super.positionRider(passenger, moveFunction);
+
+        if (passenger instanceof Player) {
+            // Lower the player's Y position by 0.5 blocks
+            passenger.setPos(passenger.getX(), passenger.getY() - 1.1, passenger.getZ());
+        }
+    }
+
+    private void removeLevitationEffect() {
+        if (!this.level().isClientSide()) {
+            this.removeAllEffects();
+        }
     }
 }
