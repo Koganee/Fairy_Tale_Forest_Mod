@@ -59,7 +59,7 @@ public class GemEssenceFairyEntity extends TamableAnimal {
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0) // Example health value
-                .add(Attributes.MOVEMENT_SPEED, 0.25) // Example speed value
+                .add(Attributes.MOVEMENT_SPEED, 0.05) // Example speed value
                 .add(Attributes.FOLLOW_RANGE, 100.0); // Example follow range value
     }
 
@@ -132,6 +132,7 @@ public class GemEssenceFairyEntity extends TamableAnimal {
             itemstack.shrink(1);
 
             this.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 200, 0));
+            this.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 300, 0));
             this.setInSittingPose(false);
 
             if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
@@ -194,6 +195,7 @@ public class GemEssenceFairyEntity extends TamableAnimal {
     public void travel(Vec3 pTravelVector) {
         if(this.isVehicle() && getControllingPassenger() instanceof Player) {
             LivingEntity livingentity = this.getControllingPassenger();
+            livingentity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 300, 0));
             this.setYRot(livingentity.getYRot());
             this.yRotO = this.getYRot();
             this.setXRot(livingentity.getXRot() * 0.5F);
