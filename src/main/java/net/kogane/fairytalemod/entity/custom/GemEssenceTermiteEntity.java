@@ -9,6 +9,8 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 import javax.annotation.Nullable;
 
@@ -27,6 +29,7 @@ public class GemEssenceTermiteEntity extends Animal{
 
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.00));
+        this.goalSelector.addGoal(1, new RemoveBlockGoal(Blocks.COAL_BLOCK));
     }
 
     public static AttributeSupplier.Builder createAttributes() {

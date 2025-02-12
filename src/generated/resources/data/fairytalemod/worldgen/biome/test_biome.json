@@ -107,13 +107,19 @@
         "type": "fairytalemod:fancy_pig",
         "maxCount": 1,
         "minCount": 1,
-        "weight": 6
+        "weight": 7
       },
       {
         "type": "fairytalemod:gem_essence_fairy",
-        "maxCount": 3,
+        "maxCount": 2,
         "minCount": 1,
-        "weight": 6
+        "weight": 8
+      },
+      {
+        "type": "fairytalemod:gem_essence_termite",
+        "maxCount": 3,
+        "minCount": 2,
+        "weight": 7
       },
       {
         "type": "minecraft:wolf",
