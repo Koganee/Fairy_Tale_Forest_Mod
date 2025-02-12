@@ -5,6 +5,7 @@ import net.kogane.fairytalemod.block.ModBlocks;
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.custom.FancyPigEntity;
 import net.kogane.fairytalemod.entity.custom.GemEssenceFairyEntity;
+import net.kogane.fairytalemod.entity.custom.GemEssenceTermiteEntity;
 import net.kogane.fairytalemod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -79,5 +80,6 @@ public class ModEvents {
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.FANCY_PIG.get(), FancyPigEntity.createAttributes().build());
         event.put(ModEntities.GEM_ESSENCE_FAIRY.get(), GemEssenceFairyEntity.createAttributes().build());
+        event.put(ModEntities.GEM_ESSENCE_TERMITE.get(), GemEssenceTermiteEntity.createAttributes().build());
     }
 }

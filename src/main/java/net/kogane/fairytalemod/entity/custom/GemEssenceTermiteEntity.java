@@ -24,14 +24,15 @@ public class GemEssenceTermiteEntity extends Animal{
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
+
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.00));
+        this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.00));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0) // Example health value
-                .add(Attributes.MOVEMENT_SPEED, 0.05) // Example speed value
+                .add(Attributes.MOVEMENT_SPEED, 0.25) // Example speed value
                 .add(Attributes.FOLLOW_RANGE, 100.0); // Example follow range value
     }
 

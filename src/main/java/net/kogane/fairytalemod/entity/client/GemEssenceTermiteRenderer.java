@@ -14,7 +14,7 @@ public class GemEssenceTermiteRenderer extends MobRenderer<GemEssenceTermiteEnti
     private static final ResourceLocation GEM_ESSENCE_TERMITE_LOCATION = new ResourceLocation(FairyTaleMod.MOD_ID,"textures/entity/gem_essence_termite.png");
 
     public GemEssenceTermiteRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new GemEssenceTermiteModel<>(pContext.bakeLayer(ModModelLayers.GEM_ESSENCE_TERMITE_LAYER)), 2f);
+        super(pContext, new GemEssenceTermiteModel<>(pContext.bakeLayer(ModModelLayers.GEM_ESSENCE_TERMITE_LAYER)), 0.5f);
     }
 
     @Override

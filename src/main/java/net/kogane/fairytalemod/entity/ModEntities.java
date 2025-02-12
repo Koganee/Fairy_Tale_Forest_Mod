@@ -24,7 +24,7 @@ public class ModEntities {
                     .sized(0.6F, 1.95F).build("gem_essence_fairy"));
     public static final RegistryObject<EntityType<GemEssenceTermiteEntity>> GEM_ESSENCE_TERMITE =
             ENTITY_TYPES.register("gem_essence_termite", () -> EntityType.Builder.of(GemEssenceTermiteEntity::new, MobCategory.CREATURE)
-                    .sized(0.6F, 1.95F).build("gem_essence_termite"));
+                    .sized(0.6F, 0.95F).build("gem_essence_termite"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

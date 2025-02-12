@@ -13,7 +13,7 @@ public class FancyPigRenderer extends MobRenderer<FancyPigEntity, FancyPigModel<
     private static final ResourceLocation FANCY_PIG_LOCATION = new ResourceLocation(FairyTaleMod.MOD_ID,"textures/entity/fancy_pig.png");
 
     public FancyPigRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new FancyPigModel<>(pContext.bakeLayer(ModModelLayers.FANCY_PIG_LAYER)), 2f);
+        super(pContext, new FancyPigModel<>(pContext.bakeLayer(ModModelLayers.FANCY_PIG_LAYER)), 0.9f);
     }
 
     @Override

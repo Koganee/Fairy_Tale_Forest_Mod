@@ -14,7 +14,7 @@ public class GemEssenceFairyRenderer extends MobRenderer<GemEssenceFairyEntity, 
     private static final ResourceLocation GEM_ESSENCE_FAIRY_LOCATION = new ResourceLocation(FairyTaleMod.MOD_ID,"textures/entity/gem_essence_fairy.png");
 
     public GemEssenceFairyRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new GemEssenceFairyModel<>(pContext.bakeLayer(ModModelLayers.GEM_ESSENCE_FAIRY_LAYER)), 2f);
+        super(pContext, new GemEssenceFairyModel<>(pContext.bakeLayer(ModModelLayers.GEM_ESSENCE_FAIRY_LAYER)), 0.85f);
     }
 
     @Override
