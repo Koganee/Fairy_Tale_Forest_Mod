@@ -12,4 +12,7 @@ public class ModModelLayers {
     public static final ModelLayerLocation GEM_ESSENCE_FAIRY_LAYER = new ModelLayerLocation(
             new ResourceLocation(FairyTaleMod.MOD_ID, "gem_essence_fairy_layer"), "gem_essence_fairy_layer");
 
+    public static final ModelLayerLocation GEM_ESSENCE_TERMITE_LAYER = new ModelLayerLocation(
+            new ResourceLocation(FairyTaleMod.MOD_ID, "gem_essence_termite_layer"), "gem_essence_termite_layer");
+
 }
