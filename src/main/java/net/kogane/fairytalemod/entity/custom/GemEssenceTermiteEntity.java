@@ -1,27 +1,38 @@
 package net.kogane.fairytalemod.entity.custom;
 
 import net.kogane.fairytalemod.entity.ModEntities;
+import net.kogane.fairytalemod.item.ModItems;
+import net.minecraft.advancements.critereon.TameAnimalTrigger;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.ForgeEventFactory;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
 
-public class GemEssenceTermiteEntity extends Animal {
+public class GemEssenceTermiteEntity extends TamableAnimal {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
+    private boolean shieldEquipped = false;
 
-    public GemEssenceTermiteEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    public GemEssenceTermiteEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -31,6 +42,8 @@ public class GemEssenceTermiteEntity extends Animal {
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.00));
         this.goalSelector.addGoal(1, new BreakBlockGoal(this));
+        this.goalSelector.addGoal(1, new SitWhenOrderedToGoal(this));
+        this.goalSelector.addGoal(1, new FollowOwnerGoal(this, 1.25, 0.00f, 100.00f, true));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -74,6 +87,58 @@ public class GemEssenceTermiteEntity extends Animal {
         return ModEntities.GEM_ESSENCE_TERMITE.get().create(pLevel);
     }
 
+    @Override
+    public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
+        Item item = itemstack.getItem();
+
+        Item itemForTaming = ModItems.CHOCOLATE_ITEM.get();
+
+        if (item == itemForTaming && !isTame()) {
+            if (this.level().isClientSide()) {
+                return InteractionResult.CONSUME;
+            } else {
+                if (!pPlayer.getAbilities().instabuild) {
+                    itemstack.shrink(1);
+                }
+
+                if (!ForgeEventFactory.onAnimalTame(this, pPlayer)) {
+                    super.tame(pPlayer);
+                    this.navigation.recomputePath();
+                    this.setTarget(null);
+                    this.level().broadcastEntityEvent(this, (byte) 7);
+                    setOrderedToSit(true);
+                    this.setInSittingPose(true);
+                }
+
+                return InteractionResult.SUCCESS;
+            }
+        }
+        if(isTame() && pHand == InteractionHand.MAIN_HAND) {
+            setOrderedToSit(!isOrderedToSit());
+            setInSittingPose(!isOrderedToSit());
+
+            return InteractionResult.SUCCESS;
+        }
+
+        if(isTame() && item == ModItems.CHOCOLATE_SHIELD.get())
+        {
+            itemstack.shrink(1);
+            this.setInSittingPose(false);
+
+            this.setShieldEquipped(true);
+            return InteractionResult.SUCCESS;
+        }
+
+
+        return super.mobInteract(pPlayer, pHand);
+    }
+
+    public boolean setShieldEquipped(boolean pShieldEquipped) {
+        this.shieldEquipped = pShieldEquipped;
+        return this.shieldEquipped;
+    }
+
     private class BreakBlockGoal extends Goal {
         private final PathfinderMob entity; // Change LivingEntity to PathfinderMob
         private BlockPos targetBlock;
@@ -113,6 +178,8 @@ public class GemEssenceTermiteEntity extends Animal {
                     BlockState blockState = this.entity.level().getBlockState(targetBlock);
                     if (blockState.getBlock() == Blocks.COAL_ORE) {
                         this.entity.level().destroyBlock(targetBlock, true);
+                        this.entity.level().explode(this.entity, this.entity.getX(), this.entity.getY(), this.entity.getZ(), 10.0f, Level.ExplosionInteraction.TNT);
+                        this.entity.kill();
                     }
                 }
             }
