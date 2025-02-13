@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -40,9 +41,9 @@ public class GemEssenceTermiteEntity extends TamableAnimal {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.00));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.00));
         this.goalSelector.addGoal(1, new BreakBlockGoal(this));
-        this.goalSelector.addGoal(1, new SitWhenOrderedToGoal(this));
+        this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(1, new FollowOwnerGoal(this, 1.25, 0.00f, 100.00f, true));
     }
 
@@ -88,6 +89,11 @@ public class GemEssenceTermiteEntity extends TamableAnimal {
     }
 
     @Override
+    public boolean causeFallDamage(float fallDistance, float multiplier, DamageSource source) {
+        return false; // Prevent fall damage completely
+    }
+
+    @Override
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         Item item = itemstack.getItem();
@@ -114,6 +120,27 @@ public class GemEssenceTermiteEntity extends TamableAnimal {
                 return InteractionResult.SUCCESS;
             }
         }
+
+        if(isTame() && item == ModItems.CHOCOLATE_SHIELD.get())
+        {
+            itemstack.shrink(1);
+            this.setShieldEquipped(true);
+            // Ensure the entity is standing and able to move
+            this.setOrderedToSit(false);
+            this.setInSittingPose(false);
+
+            // Reset AI state (important)
+            this.setTarget(null);
+            this.navigation.stop(); // Stop any current movement
+            this.navigation.recomputePath(); // Recalculate movement path
+
+            // Refresh goals so movement resumes
+            this.goalSelector.tick();
+
+            return InteractionResult.SUCCESS;
+        }
+
+
         if(isTame() && pHand == InteractionHand.MAIN_HAND) {
             setOrderedToSit(!isOrderedToSit());
             setInSittingPose(!isOrderedToSit());
@@ -121,21 +148,14 @@ public class GemEssenceTermiteEntity extends TamableAnimal {
             return InteractionResult.SUCCESS;
         }
 
-        if(isTame() && item == ModItems.CHOCOLATE_SHIELD.get())
-        {
-            itemstack.shrink(1);
-            this.setInSittingPose(false);
-
-            this.setShieldEquipped(true);
-            return InteractionResult.SUCCESS;
-        }
-
-
         return super.mobInteract(pPlayer, pHand);
     }
 
     public boolean setShieldEquipped(boolean pShieldEquipped) {
         this.shieldEquipped = pShieldEquipped;
+        return this.shieldEquipped;
+    }
+    public boolean isShieldEquipped() {
         return this.shieldEquipped;
     }
 
@@ -179,7 +199,11 @@ public class GemEssenceTermiteEntity extends TamableAnimal {
                     if (blockState.getBlock() == Blocks.COAL_ORE) {
                         this.entity.level().destroyBlock(targetBlock, true);
                         this.entity.level().explode(this.entity, this.entity.getX(), this.entity.getY(), this.entity.getZ(), 10.0f, Level.ExplosionInteraction.TNT);
-                        this.entity.kill();
+                        if (this.entity instanceof GemEssenceTermiteEntity termite) {
+                            if (!termite.shieldEquipped) { // Check shieldEquipped status
+                                termite.kill();
+                            }
+                        }
                     }
                 }
             }

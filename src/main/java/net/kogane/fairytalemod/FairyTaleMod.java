@@ -102,6 +102,7 @@ public class FairyTaleMod
             event.accept(ModItems.CANDYCANE_BLADE);
             event.accept(ModItems.SWEET_BOOSTED_BLADE);
             event.accept(ModItems.CHOCOLATE_CLUB);
+            event.accept(ModItems.CHOCOLATE_SHIELD);
         }
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {

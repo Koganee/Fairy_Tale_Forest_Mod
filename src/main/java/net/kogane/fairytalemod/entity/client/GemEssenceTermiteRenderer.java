@@ -12,13 +12,14 @@ import net.minecraft.resources.ResourceLocation;
 
 public class GemEssenceTermiteRenderer extends MobRenderer<GemEssenceTermiteEntity, GemEssenceTermiteModel<GemEssenceTermiteEntity>> {
     private static final ResourceLocation GEM_ESSENCE_TERMITE_LOCATION = new ResourceLocation(FairyTaleMod.MOD_ID,"textures/entity/gem_essence_termite.png");
+    private static final ResourceLocation GEM_ESSENCE_TERMITE_ARMOURED_LOCATION = new ResourceLocation(FairyTaleMod.MOD_ID, "textures/entity/gem_essence_termite_armoured.png");
 
     public GemEssenceTermiteRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new GemEssenceTermiteModel<>(pContext.bakeLayer(ModModelLayers.GEM_ESSENCE_TERMITE_LAYER)), 0.5f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(GemEssenceTermiteEntity pEntity) { return GEM_ESSENCE_TERMITE_LOCATION; }
+    public ResourceLocation getTextureLocation(GemEssenceTermiteEntity pEntity) { return pEntity.isShieldEquipped() ? GEM_ESSENCE_TERMITE_ARMOURED_LOCATION : GEM_ESSENCE_TERMITE_LOCATION; }
 
     @Override
     public void render(GemEssenceTermiteEntity pEntity, float pEntityYaw, float pPartialTicks,
