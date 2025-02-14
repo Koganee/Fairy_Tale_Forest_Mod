@@ -51,9 +51,9 @@ public class ModEvents {
         if (mainHandItem.getItem() == ModItems.SWEET_BOOSTED_BLADE.get()) {
             player.addEffect(new MobEffectInstance(new MobEffectInstance(MobEffects.MOVEMENT_SPEED)));
         }
+
         Level level = player.level();
         BlockPos playerPos = player.blockPosition();
-
 
         if (!level.isClientSide) { // Ensure this runs only on the server
             AABB boundingBox = new AABB(
@@ -70,6 +70,10 @@ public class ModEvents {
                     // Check if the item is inside your custom liquid block
                     if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get()) {
                         smeltItem(level, itemEntity);
+                    }
+
+                    if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.FAIRY_GEM.get()) {
+                        player.level().isRaining();
                     }
                 }
             }
