@@ -56,6 +56,11 @@ public class ModEvents {
         if (itemStack.getItem() == ModItems.SWEET_BOOSTED_BLADE.get()) {
             player.addEffect(new MobEffectInstance(new MobEffectInstance(MobEffects.JUMP, 20, 5)));
         }
+        if(itemStack.getItem() == Items.WATER_BUCKET && event.getLevel().getBlockState(event.getPos()).getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get())
+        {
+            itemStack.shrink(1);
+            player.addItem(new ItemStack(ModItems.GEM_ESSENCE_BUCKET.get()));
+        }
     }
 
     @SubscribeEvent
@@ -65,13 +70,13 @@ public class ModEvents {
         Player player = (Player) entity;
         Level level = event.getLevel();
         Item item = event.getItemStack().getItem();
-        ItemStack gemEssenceBucket = new ItemStack(ModItems.GEM_ESSENCE_BUCKET.get());
 
-        if(item == Items.GLASS_BOTTLE)
+        if(item == ModItems.GEM_ESSENCE_EXTRACT_BOTTLE.get())
         {
-            if(player.getOffhandItem().equals(gemEssenceBucket))
+            event.getItemStack().shrink(1);
+            if(player.getInventory().contains(new ItemStack(Items.IRON_ORE)))
             {
-                player.addItem(new ItemStack(ModItems.GEM_ESSENCE_EXTRACT_BOTTLE.get()));
+
             }
         }
     }

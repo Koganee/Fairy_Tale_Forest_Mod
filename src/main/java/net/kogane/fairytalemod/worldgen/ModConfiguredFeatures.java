@@ -16,6 +16,7 @@ import net.minecraft.world.level.levelgen.GeodeCrackSettings;
 import net.minecraft.world.level.levelgen.GeodeLayerSettings;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.LakeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
@@ -37,6 +38,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CHOCOLATE_BLOCK_KEY = registerKey("chocolate_block");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_FAIRY_GEM_ORE_KEY = registerKey("fairy_gem_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_FAIRY_GEM_ESSENCE_KEY = registerKey("fairy_gem_essence");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_GEM_ESSENCE_LAKE_KEY = registerKey("gem_essence_lake");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceabeles = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -74,7 +76,7 @@ public class ModConfiguredFeatures {
                         BlockStateProvider.simple(Blocks.DEEPSLATE),
                         BlockStateProvider.simple(ModBlocks.CHOCOLATE_BLOCK.get()),
                         BlockStateProvider.simple(Blocks.DIRT),
-                        BlockStateProvider.simple(Blocks.EMERALD_BLOCK),
+                        BlockStateProvider.simple(Blocks.CHERRY_LEAVES),
                         List.of(ModBlocks.CHOCOLATE_BLOCK.get().defaultBlockState()),
                         BlockTags.FEATURES_CANNOT_REPLACE , BlockTags.GEODE_INVALID_BLOCKS),
                         new GeodeLayerSettings(1.7D, 1.2D, 2.5D, 3.5D),
@@ -98,7 +100,16 @@ public class ModConfiguredFeatures {
                         -18, 18, 0.075D, 1));
 
 
-        register(context, OVERWORLD_FAIRY_GEM_ORE_KEY, Feature.ORE, new OreConfiguration(overworldFairyGemOres, 4));
+        register(context, OVERWORLD_FAIRY_GEM_ORE_KEY, Feature.ORE, new OreConfiguration(overworldFairyGemOres, 6));
+
+        register(context, OVERWORLD_GEM_ESSENCE_LAKE_KEY, Feature.LAKE,
+            new LakeFeature.Configuration(
+                    BlockStateProvider.simple(ModBlocks.GEM_ESSENCE_BLOCK.get().defaultBlockState()),
+                    BlockStateProvider.simple(Blocks.CAVE_AIR)
+            )
+        );
+
+
     }
 
 

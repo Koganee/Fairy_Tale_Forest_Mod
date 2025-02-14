@@ -33,6 +33,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CHOCOLATE_BLOCK_PLACED_KEY = registerKey("chocolate_block_placed");
     public static final ResourceKey<PlacedFeature> FAIRY_GEM_ORE_PLACED_KEY = registerKey("fairy_gem_ore_placed");
     public static final ResourceKey<PlacedFeature> FAIRY_GEM_ESSENCE_PLACED_KEY = registerKey("fairy_gem_essence_placed");
+    public static final ResourceKey<PlacedFeature> GEM_ESSENCE_LAKE_PLACED_KEY = registerKey("gem_essence_lake_placed");
 
 
 
@@ -58,6 +59,17 @@ public class ModPlacedFeatures {
                 List.of(RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(50)),
                         BiomeFilter.biome()));
+        // In your bootstrap method in ModPlacedFeatures:
+        register(context, GEM_ESSENCE_LAKE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_GEM_ESSENCE_LAKE_KEY),
+                List.of(
+                        // Adjust these modifiers as needed:
+                        RarityFilter.onAverageOnceEvery(10),  // Controls frequency
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(80)),
+                        BiomeFilter.biome()
+                )
+        );
+
     }
 
 

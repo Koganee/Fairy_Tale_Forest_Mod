@@ -24,7 +24,7 @@ public class ModBiomeModifiers {
         var biomes = context.lookup(Registries.BIOME);
 
         context.register(ADD_TREE_CANDYCANE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(Tags.Biomes.IS_PLAINS),
+                biomes.getOrThrow(Tags.Biomes.IS_MODIFIED),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.CANDYCANE_TREE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 

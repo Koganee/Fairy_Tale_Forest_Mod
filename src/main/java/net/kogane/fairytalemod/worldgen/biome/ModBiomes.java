@@ -37,7 +37,6 @@ public class ModBiomes {
     public static Biome testBiome(BootstapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.FANCY_PIG.get(), 7, 1, 1));
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.GEM_ESSENCE_FAIRY.get(), 10, 1, 2));
 
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.GEM_ESSENCE_TERMITE.get(), 12, 1, 3));
@@ -65,7 +64,7 @@ public class ModBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.CANDYCANE_BLOCK_PLACED_KEY);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CHOCOLATE_BLOCK_PLACED_KEY);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CANDYCANE_TREE_PLACED_KEY);
-        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, ModPlacedFeatures.FAIRY_GEM_ESSENCE_PLACED_KEY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, ModPlacedFeatures.GEM_ESSENCE_LAKE_PLACED_KEY);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
