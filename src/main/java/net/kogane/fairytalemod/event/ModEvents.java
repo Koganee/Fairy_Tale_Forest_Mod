@@ -71,12 +71,11 @@ public class ModEvents {
                     if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get()) {
                         smeltItem(level, itemEntity);
                     }
-
-                    if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.FAIRY_GEM.get()) {
-                        player.level().isRaining();
+                    if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == Items.WATER_BUCKET) {
+                        player.level().rainLevel = 50.0f;
                     }
-                    else {
-                        player.level().explode(player, player.getX(), player.getY(), player.getZ(), 5.0f, Level.ExplosionInteraction.TNT);
+                    if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.FAIRY_GEM.get()) {
+                        level.addParticle(ParticleTypes.BUBBLE, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 0, 0, 0);
                     }
                 }
             }
