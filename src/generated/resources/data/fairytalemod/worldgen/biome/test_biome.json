@@ -113,13 +113,13 @@
         "type": "fairytalemod:gem_essence_fairy",
         "maxCount": 2,
         "minCount": 1,
-        "weight": 8
+        "weight": 10
       },
       {
         "type": "fairytalemod:gem_essence_termite",
         "maxCount": 3,
-        "minCount": 2,
-        "weight": 7
+        "minCount": 1,
+        "weight": 12
       },
       {
         "type": "minecraft:wolf",

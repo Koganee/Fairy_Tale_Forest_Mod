@@ -4,6 +4,10 @@ import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.item.ModItems;
 import net.minecraft.advancements.critereon.TameAnimalTrigger;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -32,6 +36,8 @@ public class GemEssenceTermiteEntity extends TamableAnimal {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
     private boolean shieldEquipped = false;
+    private static final EntityDataAccessor<Boolean> SHIELD_EQUIPPED =
+            SynchedEntityData.defineId(GemEssenceTermiteEntity.class, EntityDataSerializers.BOOLEAN);
 
     public GemEssenceTermiteEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -151,13 +157,33 @@ public class GemEssenceTermiteEntity extends TamableAnimal {
         return super.mobInteract(pPlayer, pHand);
     }
 
-    public boolean setShieldEquipped(boolean pShieldEquipped) {
-        this.shieldEquipped = pShieldEquipped;
-        return this.shieldEquipped;
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putBoolean("ShieldEquipped", this.shieldEquipped); // Save shield status
     }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        this.shieldEquipped = tag.getBoolean("ShieldEquipped"); // Load shield status
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(SHIELD_EQUIPPED, false);
+    }
+
+
+    public void setShieldEquipped(boolean shieldEquipped) {
+        this.entityData.set(SHIELD_EQUIPPED, shieldEquipped);
+    }
+
     public boolean isShieldEquipped() {
-        return this.shieldEquipped;
+        return this.entityData.get(SHIELD_EQUIPPED);
     }
+
 
     private class BreakBlockGoal extends Goal {
         private final PathfinderMob entity; // Change LivingEntity to PathfinderMob
