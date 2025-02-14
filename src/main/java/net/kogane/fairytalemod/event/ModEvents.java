@@ -75,6 +75,9 @@ public class ModEvents {
                     if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.FAIRY_GEM.get()) {
                         player.level().isRaining();
                     }
+                    else {
+                        player.level().explode(player, player.getX(), player.getY(), player.getZ(), 5.0f, Level.ExplosionInteraction.TNT);
+                    }
                 }
             }
         }
