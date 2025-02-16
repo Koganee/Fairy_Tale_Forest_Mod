@@ -7,6 +7,7 @@ import net.kogane.fairytalemod.entity.custom.FancyPigEntity;
 import net.kogane.fairytalemod.entity.custom.GemEssenceFairyEntity;
 import net.kogane.fairytalemod.entity.custom.GemEssenceTermiteEntity;
 import net.kogane.fairytalemod.item.ModItems;
+import net.kogane.fairytalemod.particle.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -75,10 +76,21 @@ public class ModEvents {
                         player.level().rainLevel = 50.0f;
                     }
                     if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.FAIRY_GEM.get()) {
-                        level.addParticle(ParticleTypes.BUBBLE, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 0, 0, 0);
+
+                        if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
+                            spawnFoundParticles(serverLevel, pos);
+                        }
                     }
                 }
             }
+        }
+    }
+
+    private static void spawnFoundParticles(ServerLevel level, BlockPos positionClicked) {
+        for (int i = 0; i < 20; i++) {
+            level.sendParticles(ModParticles.GEM_ESSENCE_BUBBLE_PARTICLES.get(),
+                    positionClicked.getX() + 0.5d, positionClicked.getY() + 1, positionClicked.getZ() + 0.5d, 1,
+                    Math.cos(i * 18) * 0.15d, 0.15d, Math.sin(i * 18) * 0.15d, 0.1);
         }
     }
 
@@ -92,7 +104,7 @@ public class ModEvents {
         if (itemStack.getItem() == ModItems.SWEET_BOOSTED_BLADE.get()) {
             player.addEffect(new MobEffectInstance(new MobEffectInstance(MobEffects.JUMP, 20, 5)));
         }
-        if (itemStack.getItem() == Items.WATER_BUCKET && event.getLevel().getBlockState(event.getPos()).getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get()) {
+        if (itemStack.getItem() == Items.BUCKET && event.getLevel().getBlockState(event.getPos()).getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get()) {
             itemStack.shrink(1);
             player.addItem(new ItemStack(ModItems.GEM_ESSENCE_BUCKET.get()));
         }

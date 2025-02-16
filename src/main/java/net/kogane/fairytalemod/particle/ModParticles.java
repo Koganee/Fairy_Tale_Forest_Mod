@@ -14,6 +14,8 @@ public class ModParticles {
 
     public static final RegistryObject<SimpleParticleType> GEM_ESSENCE_PARTICLES =
             PARTICLE_TYPES.register("gem_essence_particles", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> GEM_ESSENCE_BUBBLE_PARTICLES =
+            PARTICLE_TYPES.register("gem_essence_bubble_particles", () -> new SimpleParticleType(true));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

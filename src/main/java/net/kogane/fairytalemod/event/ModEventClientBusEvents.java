@@ -13,5 +13,7 @@ public class ModEventClientBusEvents {
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ModParticles.GEM_ESSENCE_PARTICLES.get(), GemEssenceParticles.Provider::new);
+        event.registerSpriteSet(ModParticles.GEM_ESSENCE_BUBBLE_PARTICLES.get(), GemEssenceParticles.Provider::new);
+
     }
 }
