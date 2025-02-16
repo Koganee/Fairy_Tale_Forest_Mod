@@ -47,7 +47,12 @@ public class GemEssenceKingModel<T extends Entity> extends EntityModel<T> {
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        poseStack.pushPose();
+        poseStack.translate(0.0F, -4.2F, 0.0F); // Move the model up to prevent it from being inside the ground
+        poseStack.scale(4.0F, 4.0F, 4.0F);
         inner.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
         outer.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+        poseStack.popPose();
     }
+
 }

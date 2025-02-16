@@ -4,9 +4,11 @@ import net.kogane.fairytalemod.FairyTaleMod;
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.client.FancyPigModel;
 import net.kogane.fairytalemod.entity.client.GemEssenceFairyModel;
+import net.kogane.fairytalemod.entity.client.GemEssenceKingModel;
 import net.kogane.fairytalemod.entity.client.GemEssenceTermiteModel;
 import net.kogane.fairytalemod.entity.custom.FancyPigEntity;
 import net.kogane.fairytalemod.entity.custom.GemEssenceFairyEntity;
+import net.kogane.fairytalemod.entity.custom.GemEssenceKingEntity;
 import net.kogane.fairytalemod.entity.custom.GemEssenceTermiteEntity;
 import net.kogane.fairytalemod.particle.GemEssenceParticles;
 import net.kogane.fairytalemod.particle.ModParticles;
@@ -24,6 +26,7 @@ public class ModEventBusEvents {
         event.registerLayerDefinition(ModModelLayers.FANCY_PIG_LAYER, FancyPigModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.GEM_ESSENCE_FAIRY_LAYER, GemEssenceFairyModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.GEM_ESSENCE_TERMITE_LAYER, GemEssenceTermiteModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.GEM_ESSENCE_KING_LAYER, GemEssenceKingModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -31,5 +34,6 @@ public class ModEventBusEvents {
         event.put(ModEntities.FANCY_PIG.get(), FancyPigEntity.createAttributes().build());
         event.put(ModEntities.GEM_ESSENCE_FAIRY.get(), GemEssenceFairyEntity.createAttributes().build());
         event.put(ModEntities.GEM_ESSENCE_TERMITE.get(), GemEssenceTermiteEntity.createAttributes().build());
+        event.put(ModEntities.GEM_ESSENCE_KING.get(), GemEssenceKingEntity.createAttributes().build());
     }
 }

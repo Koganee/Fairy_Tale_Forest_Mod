@@ -15,4 +15,6 @@ public class ModModelLayers {
     public static final ModelLayerLocation GEM_ESSENCE_TERMITE_LAYER = new ModelLayerLocation(
             new ResourceLocation(FairyTaleMod.MOD_ID, "gem_essence_termite_layer"), "gem_essence_termite_layer");
 
+    public static final ModelLayerLocation GEM_ESSENCE_KING_LAYER = new ModelLayerLocation(
+            new ResourceLocation(FairyTaleMod.MOD_ID, "gem_essence_king_layer"), "gem_essence_king_layer");
 }
