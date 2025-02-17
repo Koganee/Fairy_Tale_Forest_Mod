@@ -28,7 +28,7 @@ public class ModEntities {
                     .sized(0.6F, 0.95F).build("gem_essence_termite"));
     public static final RegistryObject<EntityType<GemEssenceKingEntity>> GEM_ESSENCE_KING =
             ENTITY_TYPES.register("gem_essence_king", () -> EntityType.Builder.of(GemEssenceKingEntity::new, MobCategory.MONSTER)
-                    .sized(2.5F, 2.5F).build("gem_essence_king"));
+                    .sized(1.5F, 1.5F).build("gem_essence_king"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
