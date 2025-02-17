@@ -1,9 +1,12 @@
 package net.kogane.fairytalemod.entity.custom;
 
 import net.kogane.fairytalemod.entity.ModEntities;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
@@ -13,9 +16,13 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.phys.Vec3;
+
 
 import java.util.EnumSet;
 
@@ -84,6 +91,8 @@ public class GemEssenceKingEntity extends PathfinderMob {
         if (this.getTarget() == null || !(this.getTarget() instanceof Player)) {
             this.setTarget(this.level().getNearestPlayer(this, 10.0D));  // Ensure it targets the player
         }
+
+        this.fallDistance = 0.0F;
     }
 
 
@@ -96,6 +105,21 @@ public class GemEssenceKingEntity extends PathfinderMob {
         }
     }
 
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        Entity entity = source.getDirectEntity();
+        if (entity instanceof Projectile) {
+            this.playSound(SoundEvents.DECORATED_POT_BREAK, 1.0F, 1.0F);
+            return false;
+        } else return super.hurt(source, amount);
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        this.level().broadcastEntityEvent(this, (byte) 4);
+        this.playSound(SoundEvents.EVOKER_FANGS_ATTACK, 1.0F, 1.0F);
+        return super.doHurtTarget(entity);
+    }
 
     private class JumpCrushGoal extends Goal {
         private final PathfinderMob entity;
@@ -130,9 +154,22 @@ public class GemEssenceKingEntity extends PathfinderMob {
                 this.entity.getNavigation().moveTo(targetPlayer, 1.6D);
 
                 // If close enough, jump and "crush" the player
-                if (distance < 4.5D) { // Adjust attack range as needed
-                    this.entity.setDeltaMovement(0, 0.9, 0); // Simulate a jump
-                    this.entity.doHurtTarget(targetPlayer); // Attack the player
+                if (distance < 4.5D) {
+                    // Calculate jump direction
+                    Vec3 direction = new Vec3(
+                            targetPlayer.getX() - this.entity.getX(),
+                            0,
+                            targetPlayer.getZ() - this.entity.getZ()
+                    ).normalize();
+
+                    // Jump forward towards the player
+                    this.entity.setDeltaMovement(direction.x * 0.5, 0.9, direction.z * 0.5);
+
+                    // Attack after jumping
+                    this.entity.doHurtTarget(targetPlayer);
+
+                    // Play jump sound
+                    this.entity.playSound(SoundEvents.SLIME_JUMP, 1.0F, 1.0F);
                 }
             }
         }
