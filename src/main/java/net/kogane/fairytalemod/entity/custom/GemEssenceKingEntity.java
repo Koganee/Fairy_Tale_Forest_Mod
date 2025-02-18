@@ -17,6 +17,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +41,7 @@ public class GemEssenceKingEntity extends PathfinderMob {
 
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 4.00f));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.00));
+        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.00));
         this.goalSelector.addGoal(1, new JumpCrushGoal(this));
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, true) {
             @Override
@@ -52,11 +53,11 @@ public class GemEssenceKingEntity extends PathfinderMob {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 100.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.25)
+                .add(Attributes.MAX_HEALTH, 500.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.45)
                 .add(Attributes.FOLLOW_RANGE, 35.0)
-                .add(Attributes.ATTACK_DAMAGE, 8.5)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 2.5);
+                .add(Attributes.ATTACK_DAMAGE, 6.5)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1.5);
     }
 
 
@@ -95,13 +96,22 @@ public class GemEssenceKingEntity extends PathfinderMob {
         this.fallDistance = 0.0F;
     }
 
-
     @Override
     public void checkDespawn() {
         if (this.level().getDifficulty() == Difficulty.PEACEFUL && this.shouldDespawnInPeaceful()) {
             this.discard();
         } else {
             this.noActionTime = 0;
+        }
+    }
+
+    @Override
+    public void die(DamageSource source) {
+        super.die(source);  // Calls the default death behavior
+
+        // Drop a diamond block when the entity dies
+        if (!this.level().isClientSide) {
+            this.spawnAtLocation(Items.DIAMOND_BLOCK);  // Drop the diamond block
         }
     }
 
@@ -124,6 +134,8 @@ public class GemEssenceKingEntity extends PathfinderMob {
     private class JumpCrushGoal extends Goal {
         private final PathfinderMob entity;
         private Player targetPlayer;
+        private int cooldownTicks = 0; // Tracks cooldown between attacks (ticks)
+        private boolean isJumping = false;
 
         public JumpCrushGoal(PathfinderMob entity) {
             this.entity = entity;
@@ -132,6 +144,11 @@ public class GemEssenceKingEntity extends PathfinderMob {
 
         @Override
         public boolean canUse() {
+            if (cooldownTicks > 0) {
+                cooldownTicks--; // Reduce cooldown each tick
+                return false; // Cannot attack yet
+            }
+
             // Find the nearest player within 10 blocks
             this.targetPlayer = this.entity.level().getNearestPlayer(this.entity, 10.0D);
             return this.targetPlayer != null;
@@ -140,7 +157,6 @@ public class GemEssenceKingEntity extends PathfinderMob {
         @Override
         public void start() {
             if (targetPlayer != null) {
-                // Make the entity look at the player
                 this.entity.getLookControl().setLookAt(targetPlayer, 30.0F, 30.0F);
             }
         }
@@ -155,6 +171,7 @@ public class GemEssenceKingEntity extends PathfinderMob {
 
                 // If close enough, jump and "crush" the player
                 if (distance < 4.5D) {
+                    isJumping = true; // Mark as jumping
                     // Calculate jump direction
                     Vec3 direction = new Vec3(
                             targetPlayer.getX() - this.entity.getX(),
@@ -170,6 +187,15 @@ public class GemEssenceKingEntity extends PathfinderMob {
 
                     // Play jump sound
                     this.entity.playSound(SoundEvents.SLIME_JUMP, 1.0F, 1.0F);
+
+                    // Set cooldown (100 ticks = 5 seconds)
+                    cooldownTicks = 80;
+                }
+
+                // Detect landing and trigger explosion
+                if (isJumping && this.entity.onGround()) {
+                    isJumping = false;
+                    this.entity.level().explode(this.entity, this.entity.getX(), this.entity.getY(), this.entity.getZ(), 2.0f, Level.ExplosionInteraction.BLOCK);
                 }
             }
         }
