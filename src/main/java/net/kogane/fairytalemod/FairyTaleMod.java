@@ -104,6 +104,7 @@ public class FairyTaleMod
             event.accept(ModItems.SWEET_BOOSTED_BLADE);
             event.accept(ModItems.CHOCOLATE_CLUB);
             event.accept(ModItems.CHOCOLATE_SHIELD);
+            event.accept(ModItems.GEM_ESSENCE_SYMBIOTE);
         }
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {

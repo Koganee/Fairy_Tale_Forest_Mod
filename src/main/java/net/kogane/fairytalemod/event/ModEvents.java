@@ -16,6 +16,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.PolarBear;
@@ -29,6 +30,8 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -47,13 +50,20 @@ public class ModEvents {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
         ItemStack mainHandItem = player.getMainHandItem();
+        Level level = player.level();
 
         // Check if the item in the player's main hand is the specific item
         if (mainHandItem.getItem() == ModItems.SWEET_BOOSTED_BLADE.get()) {
             player.addEffect(new MobEffectInstance(new MobEffectInstance(MobEffects.MOVEMENT_SPEED)));
         }
 
-        Level level = player.level();
+        boolean touchingWall = isPlayerAgainstWall(level, player);
+
+        if (touchingWall && player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModItems.GEM_ESSENCE_SYMBIOTE.get()) {
+            // Apply upward motion to simulate climbing
+            player.setDeltaMovement(player.getDeltaMovement().x, 0.2, player.getDeltaMovement().z);
+        }
+
         BlockPos playerPos = player.blockPosition();
 
         if (!level.isClientSide) { // Ensure this runs only on the server
@@ -84,6 +94,13 @@ public class ModEvents {
                 }
             }
         }
+
+        if(player.fallDistance > 5.0f) {
+            player.level().explode(player, playerPos.getX(), playerPos.getY(), playerPos.getZ(), 1.5f, Level.ExplosionInteraction.NONE);
+            if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
+                spawnFoundParticles(serverLevel, playerPos);
+            }
+        }
     }
 
     private static void spawnFoundParticles(ServerLevel level, BlockPos positionClicked) {
@@ -109,6 +126,59 @@ public class ModEvents {
             player.addItem(new ItemStack(ModItems.GEM_ESSENCE_BUCKET.get()));
         }
     }
+
+    @SubscribeEvent
+    public static void onRightClick(PlayerInteractEvent.RightClickEmpty event) {
+        Player player = event.getEntity();
+        Level level = player.level();
+
+        double reachDistance = 30.0; // Increase if you want longer range
+        HitResult result = player.pick(reachDistance, 0.0F, false);
+
+        if (result.getType() == HitResult.Type.BLOCK) {
+            BlockHitResult blockHit = (BlockHitResult) result;
+            BlockPos blockPos = blockHit.getBlockPos();
+            Vec3 targetPos = new Vec3(blockPos.getX() + 0.5, blockPos.getY() + 1, blockPos.getZ() + 0.5);
+
+            // Start dragging the player towards the target position
+            if(player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModItems.GEM_ESSENCE_SYMBIOTE.get())
+            {
+
+                dragPlayer(player, targetPos);
+
+                if (level.isClientSide) {
+                    renderStickBeam(level, player, targetPos);
+                }
+            }
+        }
+    }
+
+    // Function to smoothly drag the player
+    private static void dragPlayer(Player player, Vec3 targetPos) {
+        Vec3 playerPos = player.position();
+        Vec3 direction = targetPos.subtract(playerPos).normalize(); // Direction vector
+        double speed = 1.5; // Adjust this to change drag speed
+
+        // Apply movement
+        player.setDeltaMovement(direction.scale(speed));
+    }
+    private static void renderStickBeam(Level level, Player player, Vec3 targetPos) {
+        if (level.isClientSide) { // Make sure it runs only on the client
+            Vec3 start = player.getEyePosition(); // Start from player's eyes
+            Vec3 direction = targetPos.subtract(start).normalize(); // Direction of the stick
+            double distance = start.distanceTo(targetPos);
+            int steps = (int) (distance * 5); // More steps = smoother line
+
+            for (int i = 0; i < steps; i++) {
+                Vec3 stepPos = start.add(direction.scale(i * 0.2)); // Position along the "stick"
+                level.addParticle(ParticleTypes.CRIT, stepPos.x, stepPos.y, stepPos.z, 0, 0, 0);
+            }
+        }
+    }
+
+
+
+
 
     @SubscribeEvent
     public static void onItemUseEmpty(PlayerInteractEvent.RightClickItem event) {
@@ -182,6 +252,14 @@ public class ModEvents {
             level.playSound(null, itemEntity.blockPosition(), SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
             level.addParticle(ParticleTypes.FLAME, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 0, 0.1, 0);
         }
+    }
+
+    private static boolean isPlayerAgainstWall(Level level, Player player) {
+        BlockPos playerPos = player.blockPosition();
+        return level.getBlockState(playerPos.north()).isSolid() ||
+                level.getBlockState(playerPos.south()).isSolid() ||
+                level.getBlockState(playerPos.east()).isSolid() ||
+                level.getBlockState(playerPos.west()).isSolid();
     }
 }
 

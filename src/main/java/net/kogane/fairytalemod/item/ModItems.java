@@ -43,6 +43,8 @@ public class ModItems {
             () -> new BottleItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> CHOCOLATE_SHIELD = ITEMS.register("chocolate_shield",
             () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> GEM_ESSENCE_SYMBIOTE = ITEMS.register("gem_essence_symbiote",
+            () -> new ArmorItem(ModArmorMaterials.GEM_ESSENCE_CHESTPLATE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     //Liquid-----------------------------------------------------------------------------------------
     public static final RegistryObject<Item> GEM_ESSENCE_BUCKET = ITEMS.register("gem_essence_bucket",
             () -> new BucketItem(ModFluids.SOURCE_GEM_ESSENCE, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
