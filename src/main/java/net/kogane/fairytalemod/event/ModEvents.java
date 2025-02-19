@@ -17,6 +17,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.PolarBear;
@@ -57,6 +58,14 @@ public class ModEvents {
             player.addEffect(new MobEffectInstance(new MobEffectInstance(MobEffects.MOVEMENT_SPEED)));
         }
 
+        BlockState playerState = level.getBlockState(player.blockPosition());
+        if (playerState.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get()) {
+            if(player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModItems.GEM_ESSENCE_SYMBIOTE.get())
+            {
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION));
+            }
+        }
+
         boolean touchingWall = isPlayerAgainstWall(level, player);
 
         if (touchingWall && player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModItems.GEM_ESSENCE_SYMBIOTE.get()) {
@@ -85,6 +94,22 @@ public class ModEvents {
                     if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == Items.WATER_BUCKET) {
                         player.level().rainLevel = 50.0f;
                     }
+                    if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.GEM_ESSENCE_CORE.get()) {
+
+                        Vec3 itemPos = itemEntity.position();
+
+                        // Create and spawn the lightning bolt
+                        LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
+                        if (lightning != null) {
+                            lightning.moveTo(itemPos.x, itemPos.y, itemPos.z);
+                            level.addFreshEntity(lightning);
+                        }
+
+                        itemEntity.setItem(new ItemStack(ModItems.GEM_ESSENCE_SYMBIOTE.get()));
+                        itemEntity.setInvulnerable(true);
+                    }
+
+
                     if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.FAIRY_GEM.get()) {
 
                         if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
@@ -95,7 +120,7 @@ public class ModEvents {
             }
         }
 
-        if(player.fallDistance > 5.0f) {
+        if(player.fallDistance > 5.0f && player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModItems.GEM_ESSENCE_SYMBIOTE.get()) {
             player.level().explode(player, playerPos.getX(), playerPos.getY(), playerPos.getZ(), 1.5f, Level.ExplosionInteraction.NONE);
             if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
                 spawnFoundParticles(serverLevel, playerPos);
@@ -143,7 +168,6 @@ public class ModEvents {
             // Start dragging the player towards the target position
             if(player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModItems.GEM_ESSENCE_SYMBIOTE.get())
             {
-
                 dragPlayer(player, targetPos);
 
                 if (level.isClientSide) {
@@ -171,7 +195,7 @@ public class ModEvents {
 
             for (int i = 0; i < steps; i++) {
                 Vec3 stepPos = start.add(direction.scale(i * 0.2)); // Position along the "stick"
-                level.addParticle(ParticleTypes.CRIT, stepPos.x, stepPos.y, stepPos.z, 0, 0, 0);
+                level.addParticle(ModParticles.GEM_ESSENCE_DEFAULT_PARTICLES.get(), stepPos.x, stepPos.y, stepPos.z, 0, 0, 0);
             }
         }
     }
