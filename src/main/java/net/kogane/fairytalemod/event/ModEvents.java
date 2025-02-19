@@ -6,6 +6,7 @@ import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.entity.custom.FancyPigEntity;
 import net.kogane.fairytalemod.entity.custom.GemEssenceFairyEntity;
 import net.kogane.fairytalemod.entity.custom.GemEssenceTermiteEntity;
+import net.kogane.fairytalemod.entity.custom.GemEssenceKingEntity;
 import net.kogane.fairytalemod.item.ModItems;
 import net.kogane.fairytalemod.particle.ModParticles;
 import net.minecraft.core.BlockPos;
@@ -111,10 +112,14 @@ public class ModEvents {
 
 
                     if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.FAIRY_GEM.get()) {
-
                         if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
                             spawnFoundParticles(serverLevel, pos);
                         }
+
+                        GemEssenceKingEntity kingEntity = new GemEssenceKingEntity(ModEntities.GEM_ESSENCE_KING.get(), level);
+                        kingEntity.moveTo(pos.getX(), pos.getY(), pos.getZ(), 0.0F, 0.0F); // Set spawn position
+
+                        level.addFreshEntity(kingEntity);
                     }
                 }
             }
