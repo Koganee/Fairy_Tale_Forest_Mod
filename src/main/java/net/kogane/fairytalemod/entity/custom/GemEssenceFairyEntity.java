@@ -102,7 +102,7 @@ public class GemEssenceFairyEntity extends TamableAnimal {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         Item item = itemstack.getItem();
 
-        Item itemForTaming  = ModItems.FAIRY_GEM.get();
+        Item itemForTaming  = ModItems.GEM_ESSENCE.get();
 
         if(item == itemForTaming && !isTame()) {
             if(this.level().isClientSide()) {

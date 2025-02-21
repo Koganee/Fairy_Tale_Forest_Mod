@@ -28,7 +28,7 @@ public abstract class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> CANDYCANE_BLOCK = registerBlock("candycane_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> FAIRY_GEM_ORE_BLOCK = registerBlock("fairy_gem_ore_block",
+    public static final RegistryObject<Block> GEM_ESSENCE_ORE_BLOCK = registerBlock("gem_essence_ore_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .strength(1f), UniformInt.of(2, 5)));
 

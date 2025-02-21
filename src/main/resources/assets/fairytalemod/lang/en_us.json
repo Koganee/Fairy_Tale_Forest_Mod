@@ -1,7 +1,7 @@
 {
   "block.fairytalemod.chocolate_block": "Chocolate Block",
   "block.fairytalemod.candycane_block": "Candycane Block",
-  "block.fairytalemod.fairy_gem_ore_block": "Fairy Gem Ore",
+  "block.fairytalemod.gem_essence_ore_block": "Gem Essence Ore",
 
   "item.fairytalemod.candycane": "Candycane",
   "item.fairytalemod.chocolate": "Chocolate",
@@ -10,7 +10,7 @@
   "item.fairytalemod.sweet_boosted_blade": "Sweet-Boosted Blade",
   "item.fairytalemod.chocolate_club": "Chocolate Club",
   "item.fairytalemod.chocolate_shield": "Chocolate Shield",
-  "item.fairytalemod.fairy_gem": "Fairy Gem",
+  "item.fairytalemod.gem_essence": "Gem Essence",
   "item.fairytalemod.gem_essence_bucket": "Gem Essence Bucket",
   "item.fairytalemod.gem_essence_extract_bottle": "Gem Essence Extract",
   "item.fairytalemod.gem_essence_symbiote": "Gem Essence Symbiote",

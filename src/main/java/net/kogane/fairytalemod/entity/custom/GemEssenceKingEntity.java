@@ -57,7 +57,7 @@ public class GemEssenceKingEntity extends PathfinderMob {
                 .add(Attributes.MOVEMENT_SPEED, 0.45)
                 .add(Attributes.FOLLOW_RANGE, 35.0)
                 .add(Attributes.ATTACK_DAMAGE, 6.5)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 1.5);
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.25);
     }
 
 
@@ -88,13 +88,16 @@ public class GemEssenceKingEntity extends PathfinderMob {
         if (this.level().isClientSide()) {
             this.setupAnimationStates();
         }
-        // Ensure the mob targets the player correctly
-        if (this.getTarget() == null || !(this.getTarget() instanceof Player)) {
-            this.setTarget(this.level().getNearestPlayer(this, 10.0D));  // Ensure it targets the player
+
+        // Ensure the mob always has a target
+        Player nearestPlayer = this.level().getNearestPlayer(this, 10.0D);
+        if (nearestPlayer != null) {
+            this.setTarget(nearestPlayer);
         }
 
         this.fallDistance = 0.0F;
     }
+
 
     @Override
     public void checkDespawn() {

@@ -36,8 +36,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CANDYCANE_TREE_KEY = registerKey("candycane_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CANDYCANE_BLOCK_KEY = registerKey("candycane_block");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CHOCOLATE_BLOCK_KEY = registerKey("chocolate_block");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_FAIRY_GEM_ORE_KEY = registerKey("fairy_gem_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_FAIRY_GEM_ESSENCE_KEY = registerKey("fairy_gem_essence");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_GEM_ESSENCE_ORE_KEY = registerKey("gem_essence_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_GEM_ESSENCE_KEY = registerKey("gem_essence");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_GEM_ESSENCE_LAKE_KEY = registerKey("gem_essence_lake");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
@@ -47,8 +47,8 @@ public class ModConfiguredFeatures {
         RuleTest endReplaceabeles = new BlockMatchTest(Blocks.END_STONE);
 
         List<OreConfiguration.TargetBlockState> overworldFairyGemOres = List.of(OreConfiguration.target(stoneReplaceabeles,
-                        ModBlocks.FAIRY_GEM_ORE_BLOCK.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceabeles, ModBlocks.FAIRY_GEM_ORE_BLOCK.get().defaultBlockState()));
+                        ModBlocks.GEM_ESSENCE_ORE_BLOCK.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceabeles, ModBlocks.GEM_ESSENCE_ORE_BLOCK.get().defaultBlockState()));
 
         register(context, CANDYCANE_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.CANDYCANE_BLOCK.get()),
@@ -85,7 +85,7 @@ public class ModConfiguredFeatures {
                         UniformInt.of(2, 6), UniformInt.of(1, 2),
                         -18, 18, 0.075D, 1));
 
-        register(context, OVERWORLD_FAIRY_GEM_ESSENCE_KEY, Feature.GEODE,
+        register(context, OVERWORLD_GEM_ESSENCE_KEY, Feature.GEODE,
                 new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR),
                         BlockStateProvider.simple(Blocks.DEEPSLATE),
                         BlockStateProvider.simple(ModBlocks.GEM_ESSENCE_BLOCK.get()),
@@ -100,7 +100,7 @@ public class ModConfiguredFeatures {
                         -18, 18, 0.075D, 1));
 
 
-        register(context, OVERWORLD_FAIRY_GEM_ORE_KEY, Feature.ORE, new OreConfiguration(overworldFairyGemOres, 6));
+        register(context, OVERWORLD_GEM_ESSENCE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldFairyGemOres, 6));
 
         register(context, OVERWORLD_GEM_ESSENCE_LAKE_KEY, Feature.LAKE,
             new LakeFeature.Configuration(

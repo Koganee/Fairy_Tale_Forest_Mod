@@ -28,14 +28,14 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         simpleBlockItem(ModBlocks.CHOCOLATE_BLOCK);
         simpleBlockItem(ModBlocks.CANDYCANE_BLOCK);
-        simpleBlockItem(ModBlocks.FAIRY_GEM_ORE_BLOCK);
+        simpleBlockItem(ModBlocks.GEM_ESSENCE_ORE_BLOCK);
         simpleItem(ModItems.CANDYCANE);
         simpleItem(ModItems.CHOCOLATE_ITEM);
         simpleItem(ModItems.CHOCOLATE_SHIELD);
         handheldItem(ModItems.CANDYCANE_BLADE);
         handheldItem(ModItems.SWEET_BOOSTED_BLADE);
         handheldItem(ModItems.CHOCOLATE_CLUB);
-        simpleItem(ModItems.FAIRY_GEM);
+        simpleItem(ModItems.GEM_ESSENCE);
         simpleItem(ModItems.GEM_ESSENCE_BUCKET);
         simpleItem(ModItems.GEM_ESSENCE_EXTRACT_BOTTLE);
         simpleItem(ModItems.GEM_ESSENCE_CORE);

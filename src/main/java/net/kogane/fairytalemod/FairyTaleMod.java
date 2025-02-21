@@ -91,7 +91,7 @@ public class FairyTaleMod
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModBlocks.CHOCOLATE_BLOCK);
             event.accept(ModBlocks.CANDYCANE_BLOCK);
-            event.accept(ModBlocks.FAIRY_GEM_ORE_BLOCK);
+            event.accept(ModBlocks.GEM_ESSENCE_ORE_BLOCK);
         }
         if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS)
         {
@@ -108,7 +108,7 @@ public class FairyTaleMod
         }
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
-            event.accept(ModItems.FAIRY_GEM);
+            event.accept(ModItems.GEM_ESSENCE);
             event.accept(ModItems.GEM_ESSENCE_BUCKET);
             event.accept(ModItems.GEM_ESSENCE_EXTRACT_BOTTLE);
             event.accept(ModItems.GEM_ESSENCE_CORE);

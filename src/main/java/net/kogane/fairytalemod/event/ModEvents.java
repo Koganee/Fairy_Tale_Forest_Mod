@@ -111,14 +111,14 @@ public class ModEvents {
                     }
 
 
-                    if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.FAIRY_GEM.get()) {
+                    if (state.getBlock() == ModBlocks.GEM_ESSENCE_BLOCK.get() && itemEntity.getItem().getItem() == ModItems.GEM_ESSENCE.get()) {
                         if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
                             spawnFoundParticles(serverLevel, pos);
                         }
 
                         GemEssenceKingEntity kingEntity = new GemEssenceKingEntity(ModEntities.GEM_ESSENCE_KING.get(), level);
                         kingEntity.moveTo(pos.getX(), pos.getY(), pos.getZ(), 0.0F, 0.0F); // Set spawn position
-
+                        itemEntity.setItem(new ItemStack(Items.ENDER_EYE));
                         level.addFreshEntity(kingEntity);
                     }
                 }

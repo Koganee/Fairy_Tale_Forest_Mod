@@ -37,7 +37,7 @@ public class ModItems {
             () -> new ChocolateClubItem(Tiers.WOOD, 3, 1, new Item.Properties().durability(64)));
     //Weapon Items-----------------------------------------------------------------------------------------
 
-    public static final RegistryObject<Item> FAIRY_GEM = ITEMS.register("fairy_gem",
+    public static final RegistryObject<Item> GEM_ESSENCE = ITEMS.register("gem_essence",
             () -> new Item(new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> GEM_ESSENCE_EXTRACT_BOTTLE = ITEMS.register("gem_essence_extract_bottle",
             () -> new BottleItem(new Item.Properties().stacksTo(1)));

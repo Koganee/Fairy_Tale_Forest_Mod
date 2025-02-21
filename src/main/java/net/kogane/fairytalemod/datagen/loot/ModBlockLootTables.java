@@ -33,8 +33,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 createItemTableWithMultipleItems(ModItems.CHOCOLATE_ITEM.get(), 4));
         add(ModBlocks.CANDYCANE_BLOCK.get(), block ->
                 createItemTableWithMultipleItems(ModItems.CANDYCANE.get(), 2));
-        add(ModBlocks.FAIRY_GEM_ORE_BLOCK.get(), block ->
-                createOreDrop(ModBlocks.FAIRY_GEM_ORE_BLOCK.get(),ModItems.FAIRY_GEM.get()));
+        add(ModBlocks.GEM_ESSENCE_ORE_BLOCK.get(), block ->
+                createOreDrop(ModBlocks.GEM_ESSENCE_ORE_BLOCK.get(), ModItems.GEM_ESSENCE.get()));
     }
 
     protected Iterable<Block> getKnownBlocks()

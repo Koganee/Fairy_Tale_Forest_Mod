@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-19T16:24:57.8284922	Item Models: fairytalemod
+// 1.20.1	2025-02-21T23:12:34.2364029	Item Models: fairytalemod
 3391e58aef9d31d6ef01db8503aced7173587c13 assets/fairytalemod/models/item/candycane.json
 bab268787403a8dba0bd0fc063d025c1298fe858 assets/fairytalemod/models/item/candycane_blade.json
 76b99d7469330d553dcba1680709d30b12f9ed5f assets/fairytalemod/models/item/candycane_block.json
@@ -6,9 +6,9 @@ bab268787403a8dba0bd0fc063d025c1298fe858 assets/fairytalemod/models/item/candyca
 462105e0bfa5f7f38c010ea6646d4e13f7bed58a assets/fairytalemod/models/item/chocolate_block.json
 1c898feb2deedcacc2684a6c402bfb5f11a19b70 assets/fairytalemod/models/item/chocolate_club.json
 d5eb199f5e19194a3f64ed1fd65867bd7da2ab3a assets/fairytalemod/models/item/chocolate_shield.json
-2647452d91dc68677d6aa7df2d76da81e28bad3b assets/fairytalemod/models/item/fairy_gem.json
-1921fed4a9e499de695dbe43ba568b0fbe45380c assets/fairytalemod/models/item/fairy_gem_ore_block.json
+e836b73ba18852f35af53e3dfc2df8cc3d3d5bec assets/fairytalemod/models/item/gem_essence.json
 5735466100efb2ef33f3055e26b11a334564c5bf assets/fairytalemod/models/item/gem_essence_bucket.json
 15dac5cd2b72a47078013f47fa3046f49d9e5b5e assets/fairytalemod/models/item/gem_essence_core.json
 f80b915cc2b1f756b1bd84f42fbc73eed45cc05f assets/fairytalemod/models/item/gem_essence_extract_bottle.json
+8cd58bc76ffdf7e7f3032773b4fe9aef1943556f assets/fairytalemod/models/item/gem_essence_ore_block.json
 e46f8fbd2f7615f1355f6a4ec05e863968b2ffb2 assets/fairytalemod/models/item/sweet_boosted_blade.json

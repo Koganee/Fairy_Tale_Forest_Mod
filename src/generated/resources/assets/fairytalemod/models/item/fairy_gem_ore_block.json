@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "fairytalemod:item/fairy_gem_ore_block"
-  }
-}

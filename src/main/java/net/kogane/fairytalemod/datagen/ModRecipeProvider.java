@@ -49,6 +49,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_gem_essence_bucket", inventoryTrigger(ItemPredicate.Builder.item().
                         of(ModItems.GEM_ESSENCE_BUCKET.get()).build()))
                 .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SWEET_BOOSTED_BLADE.get())
+                .pattern("   ")
+                .pattern("XYZ")
+                .pattern("   ")
+                .define('X', ModItems.CHOCOLATE_CLUB.get())
+                .define('Y', ModItems.GEM_ESSENCE.get())
+                .define('Z', ModItems.CANDYCANE_BLADE.get())
+                .unlockedBy("has_gem_essence", inventoryTrigger(ItemPredicate.Builder.item().
+                        of(ModItems.GEM_ESSENCE.get()).build()))
+                .save(pWriter);
     }
 }
 
