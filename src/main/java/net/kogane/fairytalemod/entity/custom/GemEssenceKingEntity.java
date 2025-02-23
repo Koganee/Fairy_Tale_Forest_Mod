@@ -1,6 +1,7 @@
 package net.kogane.fairytalemod.entity.custom;
 
 import net.kogane.fairytalemod.entity.ModEntities;
+import net.kogane.fairytalemod.item.ModItems;
 import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -114,7 +115,7 @@ public class GemEssenceKingEntity extends PathfinderMob {
 
         // Drop a diamond block when the entity dies
         if (!this.level().isClientSide) {
-            this.spawnAtLocation(Items.DIAMOND_BLOCK);  // Drop the diamond block
+            this.spawnAtLocation(ModItems.GEM_ESSENCE_CORE.get());  // Drop the diamond block
         }
     }
 
