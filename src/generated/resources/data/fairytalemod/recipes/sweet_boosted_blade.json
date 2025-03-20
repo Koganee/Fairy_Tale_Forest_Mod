@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "fairytalemod:chocolate_club"
+    },
+    "Y": {
+      "item": "fairytalemod:gem_essence"
+    },
+    "Z": {
+      "item": "fairytalemod:candycane_blade"
+    }
+  },
+  "pattern": [
+    "   ",
+    "XYZ",
+    "   "
+  ],
+  "result": {
+    "item": "fairytalemod:sweet_boosted_blade"
+  },
+  "show_notification": true
+}

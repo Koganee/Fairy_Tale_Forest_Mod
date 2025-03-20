@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gem_essence": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "fairytalemod:gem_essence"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fairytalemod:sweet_boosted_blade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_gem_essence",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fairytalemod:sweet_boosted_blade"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "fairytalemod:chocolate"
+    },
+    "Y": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    " Y "
+  ],
+  "result": {
+    "item": "fairytalemod:chocolate_club"
+  },
+  "show_notification": true
+}
