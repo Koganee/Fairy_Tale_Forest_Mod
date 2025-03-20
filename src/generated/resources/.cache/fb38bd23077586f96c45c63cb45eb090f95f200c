@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-21T23:12:34.2364029	Item Models: fairytalemod
+// 1.20.1	2025-03-20T23:35:42.9307753	Item Models: fairytalemod
 3391e58aef9d31d6ef01db8503aced7173587c13 assets/fairytalemod/models/item/candycane.json
 bab268787403a8dba0bd0fc063d025c1298fe858 assets/fairytalemod/models/item/candycane_blade.json
 76b99d7469330d553dcba1680709d30b12f9ed5f assets/fairytalemod/models/item/candycane_block.json
@@ -11,4 +11,5 @@ e836b73ba18852f35af53e3dfc2df8cc3d3d5bec assets/fairytalemod/models/item/gem_ess
 15dac5cd2b72a47078013f47fa3046f49d9e5b5e assets/fairytalemod/models/item/gem_essence_core.json
 f80b915cc2b1f756b1bd84f42fbc73eed45cc05f assets/fairytalemod/models/item/gem_essence_extract_bottle.json
 8cd58bc76ffdf7e7f3032773b4fe9aef1943556f assets/fairytalemod/models/item/gem_essence_ore_block.json
+859ff98cbe478ba50e422cf1e070ef7c54eaea27 assets/fairytalemod/models/item/gem_essence_symbiote.json
 e46f8fbd2f7615f1355f6a4ec05e863968b2ffb2 assets/fairytalemod/models/item/sweet_boosted_blade.json

@@ -14,7 +14,7 @@ import java.util.EnumMap;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    GEM_ESSENCE_CHESTPLATE("gem_essence_chestplate", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
+    GEM_ESSENCE_SYMBIOTE("gem_essence_symbiote", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
         p_266655_.put(ArmorItem.Type.BOOTS, 2);
         p_266655_.put(ArmorItem.Type.LEGGINGS, 5);
         p_266655_.put(ArmorItem.Type.CHESTPLATE, 8);

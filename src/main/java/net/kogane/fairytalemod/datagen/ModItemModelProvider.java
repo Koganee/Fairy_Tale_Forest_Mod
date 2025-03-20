@@ -39,6 +39,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.GEM_ESSENCE_BUCKET);
         simpleItem(ModItems.GEM_ESSENCE_EXTRACT_BOTTLE);
         simpleItem(ModItems.GEM_ESSENCE_CORE);
+        simpleItem(ModItems.GEM_ESSENCE_SYMBIOTE);
     }
 
     private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
