@@ -22,10 +22,6 @@ public class ModSurfaceRules {
                                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, GRASS_BLOCK)),
                         SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, CHOCOLATE)),
 
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.TEST_BIOME_2),
-                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, CHOCOLATE)),
-                        SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, CANDYCANE)),
-
 
                 // Default to a grass and dirt surface
                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, grassSurface)

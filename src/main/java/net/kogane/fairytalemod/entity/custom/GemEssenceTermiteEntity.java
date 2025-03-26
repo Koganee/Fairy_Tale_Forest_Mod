@@ -1,5 +1,6 @@
 package net.kogane.fairytalemod.entity.custom;
 
+import net.kogane.fairytalemod.block.ModBlocks;
 import net.kogane.fairytalemod.entity.ModEntities;
 import net.kogane.fairytalemod.item.ModItems;
 import net.minecraft.advancements.critereon.TameAnimalTrigger;
@@ -244,7 +245,7 @@ public class GemEssenceTermiteEntity extends TamableAnimal {
                                 (int) entity.getY() + y,
                                 (int) entity.getZ() + z
                         );
-                        if (entity.level().getBlockState(pos).getBlock() == Blocks.COAL_ORE) {
+                        if (entity.level().getBlockState(pos).getBlock() == Blocks.COAL_BLOCK) {
                             return pos;
                         }
                     }

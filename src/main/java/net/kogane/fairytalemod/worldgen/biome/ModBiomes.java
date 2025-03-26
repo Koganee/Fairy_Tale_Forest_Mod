@@ -17,12 +17,10 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 
 public class ModBiomes {
-    public static final ResourceKey<Biome> TEST_BIOME = register("test_biome");
-    public static final ResourceKey<Biome> TEST_BIOME_2 = register("test_biome_2");
+    public static final ResourceKey<Biome> TEST_BIOME = register("gem_essence_forest");
 
     public static void boostrap(BootstapContext<Biome> context) {
         context.register(TEST_BIOME, testBiome(context));
-        context.register(TEST_BIOME_2, testBiome2(context));
     }
 
     public static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder) {
@@ -37,9 +35,9 @@ public class ModBiomes {
     public static Biome testBiome(BootstapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.GEM_ESSENCE_FAIRY.get(), 10, 1, 2));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.GEM_ESSENCE_FAIRY.get(), 12, 2, 4));
 
-        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.GEM_ESSENCE_TERMITE.get(), 12, 1, 3));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.GEM_ESSENCE_TERMITE.get(), 14, 2, 4));
 
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 5, 4, 4));
 
